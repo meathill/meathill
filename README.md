@@ -7,17 +7,15 @@ Hi, I am Meathill
 
 I am Meathill Zhai. I am a full-stack (front-end biased) developer in Guangzhou, China 🇨🇳.
 
-I work at [KDocs](https://www.kdocs.cn/) as a Front-end developer.
-Our products can improve the efficiency of work for many people. 💪.
+I am looking for a new job.
 
 我是 Meathill，全栈偏前端开发者，现居 🇨🇳中国广州。
 
-我目前就职于 [金山文档](https://www.kdocs.cn/)，主要写前端。
-我们的作品能帮很多人提高工作效率，很有挑战性 💪。
+我目前正在找工作。
 
 ## 🌱 I’m currently learning
 
-* Drill down into the front-end tool chain, like Webpack and Babel
+* Drill down into the front-end tool chain, like Webpack, Babel, esbuild, swc, vite, etc.
 * TypeScript
 * Front-end performance optimization
 * Vue 3.0
@@ -25,7 +23,7 @@ Our products can improve the efficiency of work for many people. 💪.
 * Web Automation
 * ....
 
-* 钻研前端工具链，比如 Webpack 和 Babel
+* 钻研前端工具链，比如 Webpack/Babel/esbuild/swc/vite
 * TypeScript
 * 前端性能优化
 * Vue 3.0
