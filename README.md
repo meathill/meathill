@@ -7,11 +7,11 @@ Hi, I am Meathill
 
 I am Meathill Zhai. I am a full-stack (front-end biased) developer in Guangzhou, China 🇨🇳.
 
-I am looking for a new job. All opportunities are welcome.
+I am working at VeloSoft, [code.fun](https://code.fun). Our product can generate code directly from the design draft, hoping that could improve the productivity of front-end developers.
 
 我是 Meathill，全栈偏前端开发者，现居 🇨🇳中国广州。
 
-我目前正在找工作。欢迎各种工作机会。
+我目前供职于光速软件，[code.fun](https://code.fun)，我们的产品能直接从设计稿生成代码，希望提升前端开发者的生产力。
 
 ## 🌱 I’m currently learning
 
