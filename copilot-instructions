@@ -49,3 +49,4 @@
   - 避免使用缩写，除非是广泛认可的缩写
   - 函数使用动词或动宾短语命名，类使用名词命名，bool 变量使用 is/has/can 开头
 - 使用图标时，应使用 `SaveIcon` 而不是 `Save`，避免引发歧义
+- 不要使用 `const handleXXX = () => {}` 声明函数，使用 `function handleXXX() {}` 来声明
