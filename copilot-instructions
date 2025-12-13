@@ -50,3 +50,8 @@
   - 函数使用动词或动宾短语命名，类使用名词命名，bool 变量使用 is/has/can 开头
 - 使用图标时，应使用 `SaveIcon` 而不是 `Save`，避免引发歧义
 - 不要使用 `const handleXXX = () => {}` 声明函数，使用 `function handleXXX() {}` 来声明
+
+## 环境约定
+
+- 我使用 node.js >= 24，可以直接运行 ts 文件，即使写脚本也不需要考虑 JS
+- 同上，不需要 tsc 或者 ts-node
