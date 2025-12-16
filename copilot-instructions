@@ -39,8 +39,8 @@
 ## 代码规范
 
 - 除非专门提及，否则默认使用 TypeScript，尽可能把类型写好
-- 默认的执行环境是最新版本的 Node.js
-- 不要用 JSDoc，用类型系统，尽量不要 any
+- 默认的执行环境是最新版本的 Node.js，可以直接执行 `.ts` 文件
+- 不要用 JSDoc，用 TypeScript 类型系统，不要 `any`
 - 命名
   - 变量和函数使用驼峰命名法（camelCase）
   - 类和接口使用帕斯卡命名法（PascalCase）
@@ -51,6 +51,7 @@
 - 使用图标时，应使用 `SaveIcon` 而不是 `Save`，避免引发歧义
 - 不要使用 `const handleXXX = () => {}` 声明函数，使用 `function handleXXX() {}` 来声明
 - 不要内嵌 SVG，使用第三方图标库，比如 lucide
+- 单组件、库、脚本的长度不要超过 400 行，尽量控制在 300 行附近
 
 ## 环境约定
 
