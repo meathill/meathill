@@ -15,8 +15,25 @@ This skill guides you through six maintenance tasks for any codebase.
 Run them in order, or let the user pick specific ones. Each task is independent — skip any
 that are not needed.
 
-Before starting, read the project's existing docs (README, CHANGELOG, AGENTS.md, etc.)
-and scan the project structure so you understand the current state.
+## Prerequisites — Read Before You Touch Anything
+
+Before starting **any** task, read the project's existing docs and scan the project structure
+(`ls`, `package.json`, config files) so you understand the current state. Pay **special
+attention** to these three — they contain hard-won lessons and constraints that directly
+affect maintenance work:
+
+- **DEV_NOTE.md** (or equivalent architecture doc) — Architecture decisions, framework quirks,
+  known pitfalls, and workarounds. This prevents you from re-introducing bugs that have
+  already been solved or contradicting established patterns.
+- **TESTING.md** (or equivalent test guide) — How tests are organized, which frameworks are
+  used, naming conventions, and any special setup (mocks, fixtures, environment). Follow
+  these conventions exactly when writing new tests.
+- **DEPLOYMENT.md** (or equivalent ops doc) — Target environments, build constraints, and
+  runtime limitations. Changes that work locally but violate deployment constraints will
+  break production.
+
+Skipping this step leads to changes that conflict with established decisions or break in
+production. Always review these docs first, even if you think you already know the codebase.
 
 ---
 
