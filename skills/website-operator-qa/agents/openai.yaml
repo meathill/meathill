@@ -1,0 +1,4 @@
+interface:
+  display_name: "Website Operator QA"
+  short_description: "Manual website QA from operator and client perspectives"
+  default_prompt: "Use $website-operator-qa to test this website from an operator and client perspective, execute the key journeys in a browser, and log concrete issues."
