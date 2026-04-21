@@ -1,0 +1,33 @@
+{
+  "name": "meathill-coding-skills",
+  "version": "1.0.0",
+  "description": "Agent skills for Gemini CLI, Claude Code, and other AI agents by Meathill.",
+  "main": "index.js",
+  "files": [
+    "code-maintenance",
+    "pr-review",
+    "project-quote",
+    "website-operator-qa"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "agent-skills",
+    "gemini-cli",
+    "claude-code",
+    "skills",
+    "ai-agents"
+  ],
+  "author": "Meathill Zhai <meathill@gmail.com> (https://blog.meathill.com)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meathill/meathill.git",
+    "directory": "skills/meathill-coding-skills"
+  },
+  "bugs": {
+    "url": "https://github.com/meathill/meathill/issues"
+  },
+  "homepage": "https://github.com/meathill/meathill#readme"
+}
