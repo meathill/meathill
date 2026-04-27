@@ -1,0 +1,33 @@
+{
+  "name": "video-skills",
+  "version": "1.0.0",
+  "description": "Agent skills for video editing, podcast production, and livestream post-processing by Meathill.",
+  "main": "index.js",
+  "files": [
+    "livestream-to-podcast"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "agent-skills",
+    "claude-code",
+    "skills",
+    "ai-agents",
+    "video",
+    "podcast",
+    "ffmpeg",
+    "whisper"
+  ],
+  "author": "Meathill Zhai <meathill@gmail.com> (https://blog.meathill.com)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meathill/meathill.git",
+    "directory": "skills/video-skills"
+  },
+  "bugs": {
+    "url": "https://github.com/meathill/meathill/issues"
+  },
+  "homepage": "https://github.com/meathill/meathill#readme"
+}
