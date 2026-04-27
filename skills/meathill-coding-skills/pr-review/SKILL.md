@@ -32,8 +32,8 @@ description: >
 1. 使用 `gh` 命令获取 PR 详情和 review comments：
    ```bash
    gh pr view <PR_NUMBER> --json number,title,body,reviews,comments
-   gh api repos/<OWNER>/<REPO>/pulls/<PR_NUMBER>/comments
-   gh api repos/<OWNER>/<REPO>/pulls/<PR_NUMBER>/reviews
+   gh api --paginate repos/<OWNER>/<REPO>/pulls/<PR_NUMBER>/comments
+   gh api --paginate repos/<OWNER>/<REPO>/pulls/<PR_NUMBER>/reviews
    ```
 2. 解析所有 review 评论，包括行内评论和总体评论
 3. 关联每条评论到对应的文件和代码行
@@ -171,4 +171,4 @@ gh api repos/<OWNER>/<REPO>/pulls/<PR_NUMBER>/comments/<COMMENT_ID>/replies \
 - **评论很多时不要一次性全部处理** — 先分类、确认，再分批处理
 - **遇到有争议的评论** — 向用户说明双方观点，让用户决定
 - **如果 reviewer 的建议会引入新的问题** — 明确指出，建议与 reviewer 讨论
-- **始终用中文**与用户交互，但代码和 commit message 保持项目原有语言
+- **始终用中文**与用户交互，但代码和 commit message 保持项目原有语言；若仓库未明确约定提交信息语言，AI 生成或修改的 commit message 默认使用中文

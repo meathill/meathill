@@ -139,7 +139,9 @@ test structure.
 
 1. Find large files:
    ```bash
-   find src -name "*.ts" -o -name "*.tsx" -o -name "*.js" -o -name "*.jsx" -o -name "*.py" | xargs wc -l | sort -rn | head -20
+   find . \( -name "*.ts" -o -name "*.tsx" -o -name "*.js" -o -name "*.jsx" -o -name "*.py" \) \
+     -type f -not -path "*/node_modules/*" -not -path "*/dist/*" -print0 \
+     | xargs -0 wc -l | sort -rn | head -20
    ```
 2. For each large file, identify natural seams:
    - Separate types/interfaces into a dedicated types file if they're substantial
