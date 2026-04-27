@@ -203,10 +203,10 @@ Less custom code means fewer bugs and easier onboarding.
 |---|---|---|
 | Charts | `echarts` | Don't hand-write SVG charts |
 | Icons | `@phosphor-icons/react` (first choice), `lucide-react` (second), or pure CSS | Don't inline SVG icons |
-| Utility functions | `lodash-es` | debounce, throttle, deepClone, merge, etc. |
-| Date/time | `dayjs` | Don't hand-roll date formatting/timezone logic |
+| Utility functions | `es-toolkit` (first choice), `lodash-es` (legacy only) | debounce, throttle, deepClone, merge, etc. `es-toolkit` is a smaller, faster, TS-native replacement |
+| Date/time | `date-fns` (first choice), `dayjs` (lightweight alternative) | Don't hand-roll date formatting/timezone logic |
 | State management | `zustand` | Prefer over manual context/ref state |
-| CSS utilities | `clsx` + `tailwind-merge` | For conditional class composition |
+| CSS utilities | `clsx` + `tailwind-merge`, plus `cva` for type-safe variants | For conditional class composition and component variant systems |
 
 **Steps:**
 
