@@ -245,3 +245,34 @@ When the user triggers this skill:
 4. At the end, summarize all changes made.
 
 If running all tasks, go in order 1→6 since later tasks may depend on earlier cleanup.
+
+## Commit Strategy: One Maintenance Round = One Commit
+
+**A single maintenance run should land as a single squashed commit on the target branch.**
+
+While *executing*, you can use stepwise commits as checkpoints to make verification and
+rollback granular (e.g., one commit per task, or one per cross-package step). But before
+declaring the round complete, squash them all into one commit with a structured body that
+summarizes each section of work.
+
+**Why:**
+- Maintenance commits are noise in `git log` / `git blame` — squashing keeps history readable.
+- A single maintenance commit is easy to revert wholesale if something turns out wrong later.
+- The structured body (sectioned by task: docs / DRY / tests / etc.) preserves the "what
+  changed and why" without bloating commit count.
+
+**How:**
+- After verification passes (tests + typecheck + build smoke + lint clean), run
+  `git reset --soft <base-branch>` to collapse the staged checkpoint commits.
+- Create one commit with a body that has a section per task category, listing concrete
+  changes (files / decisions / rationale).
+- Mention verification results at the bottom (e.g., "32 shared tests pass, 51 web tests
+  pass, app typecheck pass, web build pass, lint clean").
+
+**Exceptions** — keep separate commits when:
+- The user is reviewing intermediate state and wants the granular history.
+- The maintenance round spans multiple PRs or branches.
+- One sub-task has its own non-trivial review need (e.g., a large refactor that benefits
+  from focused review on its own).
+
+When in doubt, squash. The default is one commit per round.
