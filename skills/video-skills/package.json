@@ -1,10 +1,11 @@
 {
   "name": "video-skills",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Agent skills for video editing, podcast production, and livestream post-processing by Meathill.",
   "main": "index.js",
   "files": [
-    "livestream-to-podcast"
+    "livestream-to-podcast",
+    "live-replay-video-pipeline"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
