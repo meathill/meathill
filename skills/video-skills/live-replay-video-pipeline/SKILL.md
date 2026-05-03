@@ -113,6 +113,8 @@ python3 scripts/_make_edited_transcript.py <video>
 ```
 生成对齐到剪辑后时间轴的 `_edited_transcript.txt`，调用方按
 `prompts/chapters_prompt.md` 划 4–10 个章节，写入 `out/06_chapters.json`。
+**章节标题硬限制 ≤16 字**（汉字/英文/标点都各算 1 字）——B 站章节解析器的硬约束，
+超过会被截断或不识别。
 
 ```
 python3 scripts/06b_chapters_to_txt.py <video>

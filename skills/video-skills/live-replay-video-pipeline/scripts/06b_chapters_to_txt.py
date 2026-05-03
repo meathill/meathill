@@ -36,5 +36,16 @@ def main():
     print(f"[ok] wrote {target} ({len(chapters)} chapters)")
     print(target.read_text())
 
+    # B 站章节标题硬上限 16 字，超过会被截断 / 不识别。warn.
+    overlong = [(i, c["title"], len(c["title"]))
+                for i, c in enumerate(chapters, start=1) if len(c["title"]) > 16]
+    if overlong:
+        print()
+        print(f"[warn] {len(overlong)} 个章节标题 >16 字，B 站会截断或不识别：",
+              file=sys.stderr)
+        for i, t, n in overlong:
+            print(f"  {i}: {n} 字 — {t}", file=sys.stderr)
+        print("  → 回到 06_chapters.json 改短再跑一遍 06b。", file=sys.stderr)
+
 if __name__ == "__main__":
     main()
