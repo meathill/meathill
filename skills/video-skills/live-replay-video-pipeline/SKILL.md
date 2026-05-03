@@ -162,8 +162,9 @@ python3 scripts/09_make_publish_starter.py <video>
 - 二、描述（B 站 / YouTube 通用，含章节、链接、hashtag）
 - 三、标签（B 站 / YouTube / 视频号 三平台）
 - 四、封面图生成 prompt（主封面 1920×1080 + 可选子封面）
-- 五、社交动态文案（B 站动态 / Twitter / 微信公众号引流）
-- 六、上传前 checklist
+- 五、社交动态文案（视频发布**后**手动转发：独立动态 / Twitter / 公众号）
+- 六、**B 站粉丝动态**（≤233 字，投稿表单里独立字段，随视频自动推到粉丝 feed）
+- 七、上传前 checklist
 
 ## 一次性跑通的命令清单
 
