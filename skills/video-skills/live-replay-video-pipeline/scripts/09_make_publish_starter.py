@@ -14,8 +14,10 @@ import argparse, json, subprocess, sys
 from pathlib import Path
 
 def fmt_ts(s: float) -> str:
-    s = int(s); m = s // 60; sec = s % 60; h = m // 60; m = m % 60
-    return f"{h}:{m:02d}:{sec:02d}" if h else f"{m:02d}:{sec:02d}"
+    """HH:MM:SS, zero-padded — required by Bilibili chapter parser, accepted
+    by YouTube too."""
+    s = int(s); h = s // 3600; m = (s % 3600) // 60; sec = s % 60
+    return f"{h:02d}:{m:02d}:{sec:02d}"
 
 def get_duration(p: Path) -> float:
     out = subprocess.check_output(

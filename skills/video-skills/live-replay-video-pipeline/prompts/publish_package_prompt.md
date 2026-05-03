@@ -28,7 +28,8 @@
 <3–5 个 bullet 列出关键内容>
 
 ⏱️ 章节
-<从 06_chapters.json 或 08_final_chapters.json 直接生成 mm:ss 标题>
+<从 06_chapters.json 或 08_final_chapters.json 直接生成 HH:MM:SS 标题，
+小时必须零填充（如 00:02:38），B 站章节解析器要求；YouTube 也吃这个格式>
 
 🔗 相关
 <相关项目/博客/GitHub/合作链接，问用户要>

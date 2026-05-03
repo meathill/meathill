@@ -113,8 +113,14 @@ python3 scripts/_make_edited_transcript.py <video>
 ```
 生成对齐到剪辑后时间轴的 `_edited_transcript.txt`，调用方按
 `prompts/chapters_prompt.md` 划 4–10 个章节，写入 `out/06_chapters.json`。
-再用一段 Python（见命令清单）把 `06_chapters.json` 转成 `06_chapters.txt`
-（mm:ss 标题）。
+
+```
+python3 scripts/06b_chapters_to_txt.py <video>
+```
+把 `06_chapters.json` 转成 `06_chapters.txt`，**严格 `HH:MM:SS 标题` 格式**——
+B 站章节解析器要求小时也零填充（`00:02:38` 而不是 `02:38` 或 `2:38`），YouTube
+也吃这个格式。脚本支持 `--source 08_final_chapters.json` 用同一逻辑生成
+slate-aware 版本。
 
 ### 7. 章节封面（07）
 
@@ -184,9 +190,9 @@ python3 "$SKILL/scripts/04_edit_video.py" "$VIDEO"
 # 5. SRT
 python3 "$SKILL/scripts/05_make_srt.py" "$VIDEO"
 
-# 6. 章节（你来读 _edited_transcript.txt → 写 06_chapters.json，再用 Python
-#         转成 06_chapters.txt）
+# 6. 章节（你来读 _edited_transcript.txt → 写 06_chapters.json）
 python3 "$SKILL/scripts/_make_edited_transcript.py" "$VIDEO"
+python3 "$SKILL/scripts/06b_chapters_to_txt.py"     "$VIDEO"
 
 # 7. 封面
 python3 "$SKILL/scripts/07_make_covers.py" "$VIDEO"

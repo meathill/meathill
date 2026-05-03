@@ -177,11 +177,11 @@ def main():
     (out_dir / "08_final_chapters.json").write_text(
         json.dumps(final_chs, ensure_ascii=False, indent=2), encoding="utf-8"
     )
+    # B 站章节要严格 HH:MM:SS（小时也要零填充），YouTube 也吃这个格式
     lines = []
     for c in final_chs:
-        s = int(c["start"]); m = s // 60; sec = s % 60
-        h = m // 60; m = m % 60
-        ts = f"{h}:{m:02d}:{sec:02d}" if h else f"{m:02d}:{sec:02d}"
+        s = int(c["start"]); h = s // 3600; m = (s % 3600) // 60; sec = s % 60
+        ts = f"{h:02d}:{m:02d}:{sec:02d}"
         lines.append(f"{ts} {c['title']}")
     (out_dir / "08_final_chapters.txt").write_text(
         "\n".join(lines) + "\n", encoding="utf-8"
