@@ -28,7 +28,8 @@ description: |
     ├── 08_final.mp4                # 最终视频：每章前面插 3 秒封面卡
     ├── 08_final_subtitles.srt      # 时间轴已加上 slate 偏移的 SRT
     ├── 08_final_chapters.json
-    └── 08_final_chapters.txt       # 章节时间已对齐到 08_final.mp4
+    ├── 08_final_chapters.txt       # 章节时间已对齐到 08_final.mp4
+    └── 09_publish_package.md       # 标题/描述/标签/封面 prompt/动态文案
 ```
 
 中间产物（01_audio.wav、_whispercpp.json、_edited_transcript.txt、_insert_work/、
@@ -41,7 +42,7 @@ _edit_work/）跑完都可以删掉；transcription 与各个步骤产物按需�
 章节化结构**（按 transcription 剪冗余、出对齐字幕、生成可视化章节封面并插到视频
 里）。两者可以串：先 podcast 那一套清音频、再用本 skill 出章节化的视频版。
 
-## 主流程（8 步）
+## 主流程（9 步）
 
 ### 1. 抽音频（01）
 
@@ -138,6 +139,26 @@ python3 scripts/08_insert_covers.py <video>
 同时按章节序号给 SRT 时间戳加 `3*i` 秒，按各 slate / chap 实测时长重写
 `08_final_chapters.txt/.json`。
 
+### 9. 发布包（LLM 步 + 09 starter 脚本）
+
+```
+python3 scripts/09_make_publish_starter.py <video>
+```
+脚本读 `08_final_chapters.json` 与 `08_final.mp4`（或 fallback 到 06/04），
+生成 `out/09_publish_package.md` **starter**：章节时间和文件名都已填好，标题/
+描述/标签/封面 prompt/动态文案处都是 `<TODO: …>` 占位。
+
+调用方（LLM）然后读 `02_transcript.txt`（或 `_edited_transcript.txt`）+ starter，
+按 `prompts/publish_package_prompt.md` 把所有 TODO 填掉。
+
+发布包结构：
+- 一、3–5 条标题候选（≤30 字，带定位标注）
+- 二、描述（B 站 / YouTube 通用，含章节、链接、hashtag）
+- 三、标签（B 站 / YouTube / 视频号 三平台）
+- 四、封面图生成 prompt（主封面 1920×1080 + 可选子封面）
+- 五、社交动态文案（B 站动态 / Twitter / 微信公众号引流）
+- 六、上传前 checklist
+
 ## 一次性跑通的命令清单
 
 ```bash
@@ -172,8 +193,12 @@ python3 "$SKILL/scripts/07_make_covers.py" "$VIDEO"
 
 # 8. 插封面到视频
 python3 "$SKILL/scripts/08_insert_covers.py" "$VIDEO"
+
+# 9. 发布包 starter（你来读 starter 里的 TODO，按 prompt 填掉）
+python3 "$SKILL/scripts/09_make_publish_starter.py" "$VIDEO"
 ```
 
 ## 提示词在哪里
 
-`prompts/cut_list_prompt.md`、`prompts/chapters_prompt.md`，调用方按需修改。
+`prompts/cut_list_prompt.md`、`prompts/chapters_prompt.md`、
+`prompts/publish_package_prompt.md`，调用方按需修改。
