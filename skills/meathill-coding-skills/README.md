@@ -10,6 +10,7 @@ running into across projects.
 |---|---|
 | **code-maintenance** | "maintain", "clean up", "refactor", "tidy up", "DRY up", "address TODOs/FIXMEs", "tech debt markers" |
 | **pr-review** | "PR review", "review 意见", "处理 review 留言", "review comments" |
+| **product-content-audit** | "改文案", "把开发者语言改成人话", "页面跟最近功能不同步", "缺下载/升级链接", "做一次产品内容审查", "SEO/meta 检查" |
 | **project-quote** | "报价", "估价", "工时评估", "给客户报价", "竞品分析报价" |
 | **website-operator-qa** | "网站测试用例", "运营/客户视角验收", "manual QA", "操作录像缺陷" |
 
@@ -64,6 +65,11 @@ copied them, copy again after updating.
 
 ## What's new
 
+- **1.2.0** — Adds **product-content-audit**: a two-stage skill (audit report
+  first, then apply) for reviewing user-facing copy in the repo from a
+  non-technical user's perspective. Targets the common case where AI-assisted
+  coding moves faster than the page copy can keep up. i18n-aware; never
+  auto-translates.
 - **1.1.0** — `code-maintenance` adds **Task 7: Resolve TODO/FIXME Comments**.
   After every maintenance round, the skill now sweeps for `TODO`, `FIXME`,
   `HACK`, `XXX`, `BUG` markers and triages each (resolve / convert to issue /
