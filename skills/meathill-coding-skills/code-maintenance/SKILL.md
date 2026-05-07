@@ -6,12 +6,13 @@ description: >
   Also trigger when the user mentions: cleaning docs, adding tests, extracting shared code,
   splitting large files, replacing hand-rolled utilities with libraries, or consolidating
   duplicate code. Even partial mentions like "too many docs", "file is too big", "we should
-  use a library for this", or "DRY up" should trigger this skill.
+  use a library for this", "DRY up", "TODO comments piling up", "address FIXMEs", or
+  "clean up tech debt markers" should trigger this skill.
 ---
 
 # Code Maintenance Skill
 
-This skill guides you through six maintenance tasks for any codebase.
+This skill guides you through seven maintenance tasks for any codebase.
 Run them in order, or let the user pick specific ones. Each task is independent — skip any
 that are not needed.
 
@@ -234,17 +235,79 @@ Less custom code means fewer bugs and easier onboarding.
 
 ---
 
+## Task 7: Resolve TODO/FIXME Comments
+
+**Goal:** Don't carry tech debt markers into the next maintenance round.
+By the end of this task, every TODO/FIXME left in the code should be one you
+*chose* to leave — not one nobody dared touch.
+
+This task runs **last on purpose**: Tasks 3–6 frequently make older TODOs
+obsolete (a refactor closes a "TODO: split this", a library swap closes a
+"FIXME: handle timezones"), so triaging at the end avoids wasted work.
+
+**Markers to scan:** `TODO`, `FIXME`, `HACK`, `XXX`, `BUG`. These are the
+universal ones across languages and comment styles. Use word boundaries to
+avoid matching inside identifiers like `todoList`.
+
+**Steps:**
+
+1. Find all markers (excluding generated and vendored code):
+   ```bash
+   rg -n --word-regexp '(TODO|FIXME|HACK|XXX|BUG)' \
+     -g '!node_modules' -g '!dist' -g '!build' -g '!.next' \
+     -g '!*.lock' -g '!*.min.*'
+   ```
+   Fall back to `grep -rEn '\b(TODO|FIXME|HACK|XXX|BUG)\b' …` if `rg` is
+   unavailable.
+
+2. For each match, read the surrounding code (5–10 lines above and below) so
+   you understand what the comment was actually warning about, then pick **one
+   of three outcomes**:
+
+   - **Resolve now** — Do the work in this maintenance round. Most TODOs that
+     survive Tasks 3–6 are small enough to close in minutes. Delete the
+     comment after the fix.
+   - **Convert to a tracked issue** — If it's a real backlog item (a known
+     bug, a future feature, a constraint waiting on something external),
+     file it on the project's issue tracker (GitHub Issues / Linear / etc.)
+     and remove the inline comment. Optionally replace it with
+     `// see issue #123` if the location is non-obvious from the issue body.
+     Confirm with the user before opening external issues.
+   - **Delete** — If the surrounding code has changed and the concern no
+     longer applies, just delete the comment. State the reason in the commit
+     body so the decision is auditable.
+
+3. Re-run the scan and confirm only intentional, time-bounded markers remain.
+   A clean report at the end of the task is the success signal.
+
+**What NOT to do:**
+
+- Don't blindly delete TODOs without reading the surrounding code — the
+  comment may be the only documentation of a subtle invariant.
+- Don't add new TODO/FIXME comments during this maintenance round. If you
+  hit something you can't fix, either open an issue and link it, or note it
+  in the round summary — don't leave a fresh orphan marker.
+- Don't touch TODOs inside:
+  - Third-party code (`node_modules`, `vendor`, `dist`, `build`).
+  - Test fixtures, sample data, or copy-pasted reference snippets — those
+    are inputs, not real markers.
+  - Translated strings (i18n catalogs) that legitimately contain the word.
+- Don't auto-create issues in bulk without confirming with the user — a
+  flood of low-quality issues is worse than the original TODOs.
+
+---
+
 ## Running the Maintenance
 
 When the user triggers this skill:
 
-1. Ask which tasks they want to run, or if they want all six.
+1. Ask which tasks they want to run, or if they want all seven.
 2. For each selected task, show a brief summary of what you found and your proposed changes
    before making them.
 3. After each task, run the project's test suite and type checking to verify nothing broke.
 4. At the end, summarize all changes made.
 
-If running all tasks, go in order 1→6 since later tasks may depend on earlier cleanup.
+If running all tasks, go in order 1→7 since later tasks may depend on earlier cleanup.
 
 ## Commit Strategy: One Maintenance Round = One Commit
 
