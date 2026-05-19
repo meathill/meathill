@@ -35,6 +35,20 @@ description: |
 中间产物（01_audio.wav、_whispercpp.json、_edited_transcript.txt、_insert_work/、
 _edit_work/）跑完都可以删掉；transcription 与各个步骤产物按需保留。
 
+## 跨步骤原则：第一人称视角
+
+LLM 创意步骤（Step 3 / 6 / 9）写出来的文字——cut list reason、章节标题、标题候选、
+描述、动态文案、粉丝动态、封面 prompt 副标题——**都是作者自己在跟观众沟通的话**，
+不是 LLM 代替作者描述作者。所以：
+
+- 不要写 "程序员的自我介绍" / "20 年程序员的 Codex 起手式" / "a 20-yr dev uses Codex"
+  这种把作者当第三人称对象的句式。
+- 改成 "自我介绍" / "我的 Codex 起手式" / "I'm using Codex"。
+- 引用作者的资历时要么"我"包裹（"我做了 20 年开发"），要么直接省略。
+
+下游 prompt（`prompts/chapters_prompt.md`、`prompts/publish_package_prompt.md`）里
+也复述了这条规则；这里是 cross-cutting reminder，章节标题 + 整个发布包都按这条来。
+
 ## 与 livestream-to-podcast 的区别
 
 姊妹 skill `livestream-to-podcast` 专注于**音频清洗 + 上传素材**（去底噪、响度
