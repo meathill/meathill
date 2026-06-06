@@ -12,7 +12,7 @@ description: >
 
 # Code Maintenance Skill
 
-This skill guides you through seven maintenance tasks for any codebase.
+This skill guides you through eight maintenance tasks for any codebase.
 Run them in order, or let the user pick specific ones. Each task is independent — skip any
 that are not needed.
 
@@ -241,9 +241,9 @@ Less custom code means fewer bugs and easier onboarding.
 By the end of this task, every TODO/FIXME left in the code should be one you
 *chose* to leave — not one nobody dared touch.
 
-This task runs **last on purpose**: Tasks 3–6 frequently make older TODOs
+This task runs **after the code-change tasks on purpose**: Tasks 3–6 frequently make older TODOs
 obsolete (a refactor closes a "TODO: split this", a library swap closes a
-"FIXME: handle timezones"), so triaging at the end avoids wasted work.
+"FIXME: handle timezones"), so triaging after them avoids wasted work.
 
 **Markers to scan:** `TODO`, `FIXME`, `HACK`, `XXX`, `BUG`. These are the
 universal ones across languages and comment styles. Use word boundaries to
@@ -297,17 +297,72 @@ avoid matching inside identifiers like `todoList`.
 
 ---
 
+## Task 8: Prune Merged Branches
+
+**Goal:** Remove local branches that are already merged, so `git branch` only lists work
+that's still in flight. This is git hygiene, not a code change — it produces no commit.
+
+Run this **at the very end**, after the maintenance commit has landed — the round itself may
+create or merge branches, and you want a clean slate once everything is committed.
+
+**Only delete branches that are *provably* merged.** Two reliable signals:
+
+1. **Fully merged into the default branch** — the branch tip is an ancestor of
+   `main`/`master`, so `git branch --merged` lists it and `git branch -d` accepts it.
+2. **Upstream gone** — the PR was merged and the remote branch deleted, leaving a local
+   branch whose upstream shows `[gone]`. This is the squash-/rebase-merge case that
+   `--merged` cannot see (the squashed commit isn't an ancestor of the default branch).
+
+**Steps:**
+
+1. Refresh remote state and drop stale remote-tracking refs:
+   ```bash
+   git fetch --prune
+   ```
+2. Note the current branch and the default branch (`main`/`master`); neither — nor any
+   long-lived branch like `develop` or `release/*` — may ever be deleted.
+3. List branches fully merged into the default branch, excluding the current/worktree
+   markers and protected branches:
+   ```bash
+   git branch --merged <default> | grep -vE '^[*+]|\b(main|master|develop)\b'
+   ```
+4. List branches whose upstream is gone (merged-then-deleted PRs):
+   ```bash
+   git branch -vv | grep -E '\[[^]]+: gone\]' | grep -vE '^[*+]' | awk '{print $1}'
+   ```
+5. Show the combined candidate list to the user and confirm before deleting anything.
+6. Delete with the **safe** flag:
+   - Merged branches: `git branch -d <branch>` — it refuses if the branch isn't actually
+     merged, which is the safety net.
+   - Upstream-gone branches that `-d` rejects (squash/rebase merge): first verify the PR is
+     merged (`gh pr list --state merged --head <branch>`, or check the tracker), then use
+     `git branch -D <branch>` — only after the user confirms.
+
+**What NOT to do:**
+
+- Never delete the current branch, the default branch, or any long-lived/protected branch
+  (`main`, `master`, `develop`, `release/*`, anything the team keeps permanently).
+- Don't reach for `-D` on the `--merged` path. If `-d` refuses, the branch isn't merged —
+  investigate, don't force.
+- Don't delete *remote* branches (`git push origin --delete`) as routine cleanup — that's
+  destructive and out of scope. Limit cleanup to local branches plus stale remote-*tracking*
+  refs (`git fetch --prune`).
+- Don't trust `--merged` alone in squash/rebase workflows — it misses them. Use the
+  upstream-gone signal or PR status for those, and confirm before force-deleting.
+
+---
+
 ## Running the Maintenance
 
 When the user triggers this skill:
 
-1. Ask which tasks they want to run, or if they want all seven.
+1. Ask which tasks they want to run, or if they want all eight.
 2. For each selected task, show a brief summary of what you found and your proposed changes
    before making them.
 3. After each task, run the project's test suite and type checking to verify nothing broke.
 4. At the end, summarize all changes made.
 
-If running all tasks, go in order 1→7 since later tasks may depend on earlier cleanup.
+If running all tasks, go in order 1→8 since later tasks may depend on earlier cleanup.
 
 ## Commit Strategy: One Maintenance Round = One Commit
 
