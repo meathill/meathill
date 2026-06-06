@@ -49,13 +49,6 @@ LLM 创意步骤（Step 3 / 6 / 9）写出来的文字——cut list reason、�
 下游 prompt（`prompts/chapters_prompt.md`、`prompts/publish_package_prompt.md`）里
 也复述了这条规则；这里是 cross-cutting reminder，章节标题 + 整个发布包都按这条来。
 
-## 与 livestream-to-podcast 的区别
-
-姊妹 skill `livestream-to-podcast` 专注于**音频清洗 + 上传素材**（去底噪、响度
-标准化、片头片尾裁剪、生成简介/标签/封面 prompt）。本 skill 专注于**视频剪辑 +
-章节化结构**（按 transcription 剪冗余、出对齐字幕、生成可视化章节封面并插到视频
-里）。两者可以串：先 podcast 那一套清音频、再用本 skill 出章节化的视频版。
-
 ## 主流程（9 步）
 
 ### 1. 抽音频（01）
