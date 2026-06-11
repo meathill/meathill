@@ -7,12 +7,13 @@ description: >
   splitting large files, replacing hand-rolled utilities with libraries, or consolidating
   duplicate code. Even partial mentions like "too many docs", "file is too big", "we should
   use a library for this", "DRY up", "TODO comments piling up", "address FIXMEs", or
-  "clean up tech debt markers" should trigger this skill.
+  "clean up tech debt markers", cleaning completed GitHub issues, or pruning merged local
+  and remote branches should trigger this skill.
 ---
 
 # Code Maintenance Skill
 
-This skill guides you through eight maintenance tasks for any codebase.
+This skill guides you through nine maintenance tasks for any codebase.
 Run them in order, or let the user pick specific ones. Each task is independent — skip any
 that are not needed.
 
@@ -297,13 +298,74 @@ avoid matching inside identifiers like `todoList`.
 
 ---
 
-## Task 8: Prune Merged Branches
+## Task 8: Clean Up Completed GitHub Issues
+
+**Goal:** Close open GitHub issues that are already completed, with an auditable comment
+explaining why they are being closed. This is tracker hygiene, not feature work.
+
+Run this near the end of the maintenance round, after code/doc/test cleanup has made the
+current project state clear, but before branch pruning.
+
+**Default action:** Close completed issues. Do **not** delete issues unless the user
+explicitly asks for deletion and understands the audit/history tradeoff.
+
+**Candidate signals:**
+
+- A merged PR references the issue with closing keywords (`fixes`, `closes`, `resolves`,
+  or equivalent wording), but the issue is still open.
+- Issue comments or labels indicate completion (`done`, `completed`, `fixed`, `shipped`,
+  `implemented`, `resolved`) while the issue remains open.
+- The repository contains direct evidence that the requested work already exists, such as
+  implemented code, tests, docs, config, or migration state matching the issue request.
+- The issue was replaced by a newer issue or PR that has already landed.
+
+**Steps:**
+
+1. Inspect open issues and recent merged PRs:
+   ```bash
+   gh issue list --state open --limit 100
+   gh pr list --state merged --limit 100
+   ```
+2. For each likely candidate, read the issue and linked PR/context before deciding:
+   ```bash
+   gh issue view <number> --comments
+   gh pr view <number> --comments
+   ```
+3. Build a candidate list for the user with:
+   - Issue number and title
+   - Evidence that the work is complete
+   - Proposed close comment
+   - Confidence level (`high`, `medium`, `low`)
+4. Ask the user to confirm the final list before closing anything. Close only confirmed
+   issues.
+5. Close confirmed issues with a short, auditable comment:
+   ```bash
+   gh issue close <number> --comment "Closing as completed: <brief evidence>."
+   ```
+6. Summarize which issues were closed and which candidates were left open.
+
+**What NOT to do:**
+
+- Don't close issues from title or labels alone. Read the issue body, comments, and linked
+  PR/code context first.
+- Don't close issues that are partially complete, ambiguous, blocked, or still useful as
+  tracking items. Leave them open and mention why.
+- Don't bulk-close issues without a user-confirmed candidate list.
+- Don't delete issues as routine cleanup. Closing preserves history and links.
+- Don't close issues in archived, fork, or wrong-owner repositories without confirming the
+  intended tracker first.
+
+---
+
+## Task 9: Prune Merged Branches
 
 **Goal:** Remove local branches that are already merged, so `git branch` only lists work
-that's still in flight. This is git hygiene, not a code change — it produces no commit.
+that's still in flight. Optionally remove confirmed merged remote branches too. This is git
+hygiene, not a code change — it produces no commit.
 
-Run this **at the very end**, after the maintenance commit has landed — the round itself may
-create or merge branches, and you want a clean slate once everything is committed.
+Run this **at the very end**, after the maintenance commit has landed or the maintenance PR
+has merged — the round itself may create or merge branches, and you want a clean slate once
+everything is committed.
 
 **Only delete branches that are *provably* merged.** Two reliable signals:
 
@@ -337,6 +399,13 @@ create or merge branches, and you want a clean slate once everything is committe
    - Upstream-gone branches that `-d` rejects (squash/rebase merge): first verify the PR is
      merged (`gh pr list --state merged --head <branch>`, or check the tracker), then use
      `git branch -D <branch>` — only after the user confirms.
+7. If the user wants remote branch cleanup, build a separate remote candidate list from
+   merged PRs and protected-branch rules, then ask for explicit confirmation before deleting
+   any remote branch:
+   ```bash
+   gh pr list --state merged --head <branch>
+   git push origin --delete <branch>
+   ```
 
 **What NOT to do:**
 
@@ -344,9 +413,10 @@ create or merge branches, and you want a clean slate once everything is committe
   (`main`, `master`, `develop`, `release/*`, anything the team keeps permanently).
 - Don't reach for `-D` on the `--merged` path. If `-d` refuses, the branch isn't merged —
   investigate, don't force.
-- Don't delete *remote* branches (`git push origin --delete`) as routine cleanup — that's
-  destructive and out of scope. Limit cleanup to local branches plus stale remote-*tracking*
-  refs (`git fetch --prune`).
+- Don't delete *remote* branches (`git push origin --delete`) as routine cleanup. Remote
+  deletion is allowed only when the user asked for remote cleanup, the branch is not
+  protected, the matching PR is confirmed merged, and the user explicitly confirmed the final
+  delete list.
 - Don't trust `--merged` alone in squash/rebase workflows — it misses them. Use the
   upstream-gone signal or PR status for those, and confirm before force-deleting.
 
@@ -356,13 +426,17 @@ create or merge branches, and you want a clean slate once everything is committe
 
 When the user triggers this skill:
 
-1. Ask which tasks they want to run, or if they want all eight.
+1. Ask which tasks they want to run, or if they want all nine.
 2. For each selected task, show a brief summary of what you found and your proposed changes
    before making them.
 3. After each task, run the project's test suite and type checking to verify nothing broke.
-4. At the end, summarize all changes made.
+4. Run Task 8 before branch pruning so completed issue cleanup can use the final project and
+   PR state.
+5. Run Task 9 at the very end, after maintenance work is committed and, when applicable,
+   merged.
+6. At the end, summarize all changes made.
 
-If running all tasks, go in order 1→8 since later tasks may depend on earlier cleanup.
+If running all tasks, go in order 1→9 since later tasks may depend on earlier cleanup.
 
 ## Commit Strategy: One Maintenance Round = One Commit
 
