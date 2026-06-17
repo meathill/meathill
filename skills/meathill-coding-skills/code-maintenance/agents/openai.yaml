@@ -1,0 +1,4 @@
+interface:
+  display_name: "Code Maintenance"
+  short_description: "周期性清理代码质量、项目文档、测试覆盖和技术债问题"
+  default_prompt: "Use $code-maintenance 帮我对这个代码库做一次维护扫描，找出文档、测试、重复代码和技术债问题。"

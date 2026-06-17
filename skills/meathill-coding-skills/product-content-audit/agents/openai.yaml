@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product Content Audit"
+  short_description: "审视仓库中的用户文案、CTA、空状态和 SEO 问题"
+  default_prompt: "Use $product-content-audit 帮我审视这个仓库里的用户可见文案，找出过时、难懂或缺入口的问题。"

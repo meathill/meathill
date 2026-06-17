@@ -1,0 +1,4 @@
+interface:
+  display_name: "PR Review"
+  short_description: "分类处理 PR review 评论，并指导逐条修复或跳过"
+  default_prompt: "Use $pr-review 帮我整理这些 PR review 评论，分类优先级，并逐条处理需要修复的意见。"

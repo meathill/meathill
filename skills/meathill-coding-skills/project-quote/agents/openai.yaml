@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Quote"
+  short_description: "生成项目报价、工时估算、技能清单和竞品功能拆解报告"
+  default_prompt: "Use $project-quote 帮我拆解这个项目需求，估算 AI 辅助开发工时，并生成报价单。"

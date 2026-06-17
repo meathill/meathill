@@ -1,0 +1,4 @@
+interface:
+  display_name: "Live Replay Video Pipeline"
+  short_description: "把直播录像处理成带字幕、章节、封面的视频发布包流程"
+  default_prompt: "Use $live-replay-video-pipeline 帮我把这段直播录像处理成带剪辑、字幕、章节、封面和发布文案的视频包。"

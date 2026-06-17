@@ -1,6 +1,9 @@
 ---
 name: website-operator-qa
-description: 对公开网站和配套 CMS 做运营/客户视角的浏览器人工测试（manual website QA, operator/client acceptance, not e2e）。当用户要求列出测试用例、逐项执行真实业务流程、记录问题、清理测试数据，或把结果整理成 WIP、报告或 GitHub issue 时使用。
+description: >
+  对公开网站和配套 CMS 做运营/客户视角的真实浏览器人工测试（manual website QA,
+  operator/client acceptance，不是自动化 e2e）。当用户要求列测试用例、逐项执行业务流程、
+  检查前台和 CMS、记录问题、清理测试数据，或整理 WIP、报告、GitHub issue 时触发。
 ---
 
 # Website Operator QA

@@ -1,10 +1,10 @@
 ---
 name: live-replay-video-pipeline
-description: |
-  把直播录像处理成可发布的视频包：保留 transcription、根据 transcription 自动剪掉冗余、
-  为剪辑后视频生成 SRT 字幕、生成章节（标题 + 起止时间）、为每个章节生成截图加标题封面，
-  并把封面插入最终视频。当用户提供 .mp4/.mov/.mkv 直播录像并要求剪辑/转写/出字幕/出
-  章节/出封面/做章节卡时触发。
+description: >
+  把直播录像或长视频回放处理成可发布的视频包：转写原始音频、基于 transcription
+  规划剪辑、剪掉冗余和长停顿、生成 SRT 字幕、章节、章节封面、最终视频和发布文案。
+  当用户提供 .mp4/.mov/.mkv 直播录像、OBS 录屏、webinar 或课程回放，并要求剪辑、
+  转写、出字幕、出章节、做封面/章节卡、准备 B 站或 YouTube 发布素材时触发。
 ---
 
 # Live Replay Video Pipeline
@@ -32,8 +32,9 @@ description: |
     └── 09_publish_package.md       # 标题/描述/标签/封面 prompt/动态文案
 ```
 
-中间产物（01_audio.wav、_whispercpp.json、_edited_transcript.txt、_insert_work/、
-_edit_work/）跑完都可以删掉；transcription 与各个步骤产物按需保留。
+中间产物（01_audio.wav、_edited_transcript.txt、_insert_work/、_edit_work/ 等）
+跑完可删，但**不要自动删**——用 `scripts/99_cleanup.py`（手动，建议上传后再跑，
+见第 10 步）。
 
 ## 跨步骤原则：第一人称视角
 
@@ -58,22 +59,36 @@ python3 scripts/01_extract_audio.py <video>
 ```
 ffmpeg 出 16kHz/mono PCM。80 分钟视频 ~20 秒搞定。
 
-### 2. 转写（02 + 02b）
+### 2. 转写（A：API 优先；B：本地 whisper-cpp 兜底）
 
-`huggingface.co` 在 Cowork 沙箱代理里被拒（403），faster-whisper / openai-whisper
-都下不了模型。所以转写在**用户 Mac 本地**用 whisper-cpp 跑：
+两条路结果都落成标准 `02_transcript.json`（`segments:[{start,end,text}]`）+
+`02_transcript.txt`，下游一致。
 
-1. 把 `assets/run_transcribe.command` 复制到视频所在目录
-2. 用户 Finder 双击 `run_transcribe.command`（Terminal 自动打开并跑）
-3. 脚本自动找 `whisper-cli` / `whisper-cpp` / `main`，自动找
-   `~/whisper.cpp/models/ggml-*.bin`、`/opt/homebrew/share/whisper-cpp/models/`、
-   MacWhisper 模型路径等
-4. 跑完调 `scripts/02b_adapt_whispercpp.py` 把 whisper.cpp 的 JSON 转成
-   pipeline 标准格式 `02_transcript.json` + `02_transcript.txt`
+**A. API 转写（推荐，尤其中英混说 + 技术术语）** — `scripts/02d_transcribe_api.py`
 
-LLM（你）用 computer-use 自动化：Finder 浏览到文件 → 双击。**注意：**`.command`
-的双击会在 Mac 主屏（不一定是当前 Cowork 显示器）的 Terminal 里打开，必要时
-`switch_display` 看进度。
+whisper（本地 medium 尤甚）对中英 code-switching + 技术词很弱；而本 pipeline **依赖
+逐句时间戳**。已查证：OpenAI `gpt-4o-transcribe` 不返回时间戳（仅 `whisper-1` 返回，
+25MB/文件）；`MiMo-V2.5-ASR` 文本最准但**不返回时间戳**。所以：
+
+- 默认 `--engine mimo`：用 MiMo（中英混说 + 技术内容最准）。它无时间戳，脚本用 ffmpeg
+  `silencedetect` 在停顿处把音频切 ~100s 块（块边界=真实时间戳），并发送 MiMo 取文本，
+  再按标点分句、按字数分配块内时间。MiMo 单次能吃 ≥300s。
+- `--engine whisper1`：`whisper-1`（verbose_json 段级时间戳）+ GPT-4o 按术语词表逐句纠错。
+- `--probe-mimo`：对 15s 切片打印原始响应，确认 token / 时间戳能力。
+- 凭据放 `~/.config/live-replay/secrets.env`（`MIMO_API_KEY` / `MIMO_BASE_URL` /
+  `OPENAI_API_KEY`），脚本用 curl `-K` stdin 传，**不进 argv / 日志**。
+
+**A+. 清口癖（可选）** — `scripts/02e_clean_filler.py`
+
+用 MiMo 对话模型（默认 `mimo-v2.5`）把转写文本里的口癖（呃/嗯/啊/哈、重复、口吃）清掉，
+**只改 text、保留时间戳**，原文备份到 `02_transcript.raw.json`。SRT 字幕和章节/发布文案
+因此读着干净，**视频原声不动**（适合"口癖只清字幕、不动视频"的需求）。
+
+**B. 本地 whisper-cpp（离线兜底）** — `assets/run_transcribe.command` + `02b`
+
+无网络 / 不想花 API 时：把 `assets/run_transcribe.command` 复制到视频目录双击跑（自动找
+`whisper-cli`/`whisper-cpp`/`main` + `ggml-*.bin`），跑完用 `scripts/02b_adapt_whispercpp.py`
+转成标准格式。中英混说质量最弱。
 
 ### 3. 生成 cut list（LLM 步）
 
@@ -104,6 +119,15 @@ python3 scripts/04_edit_video.py <video>
   一遍，在受 45s 超时的沙箱里很容易被打断、出 moov 缺失。要 faststart 可以
   上传前单独再 remux。
 - 如果某段 stream-copy 出来太短或失败，自动 fallback 到 ultrafast 重编码。
+
+**局部变速 / 8x 时间流逝**：cut list 段可带可选字段 `"speed"`（float，默认 1.0）。一旦有
+任何段 `speed != 1.0`，04 自动切到**变速路径**：所有段（含 1x）统一重编码到同一 profile
+（libx264 30fps + `-video_track_timescale 90000`）再 `concat -c copy`；`speed>1` 的段
+`setpts=PTS/N` 提速并**静音**（anullsrc 占位）。无任何 speed 字段时行为与旧版逐字节一致。
+05 / `_make_edited_transcript` 的投影同样 speed-aware（`(t-s)/speed`），落在 speed>1 段内的
+字幕整条丢弃（时间流逝段无可懂语音），`_edited_transcript.txt` 里折叠成一行 ⏩ 标记。共享
+`scripts/_cuts.py`（`load_segments` / `build_cum` / `any_speed`）保证三处算法不漂移。
+用法：给"等待 / 空档"段加 `"speed": 8.0`。
 
 ### 5. SRT（05）
 
@@ -148,9 +172,11 @@ python3 scripts/07_make_covers.py <video>
 ```
 python3 scripts/08_insert_covers.py <video>
 ```
-把 `covers/` 里的 8 张 PNG 各做成 3 秒静音 mp4（强制 `-video_track_timescale
-90000` 跟 `04_edited.mp4` 时间基对齐，否则 concat `-c copy` 时长会乱跑），
-切 `04_edited.mp4` 成 8 个 chapter 片段，交叉 concat 出 `08_final.mp4`。
+把 `covers/` 里的 PNG 各做成 3 秒静音 mp4（**探测 `04_edited.mp4` 的 fps + timescale
+并据此渲染 slate**，让 30fps 变速成片 / 60fps 普通成片都能干净 concat），
+切 `04_edited.mp4` 成 chapter 片段，交叉 concat 出 `08_final.mp4`。
+注意：chapter 用 `-c copy` 切有关键帧漂移，多章累计可达几秒，`08_final` 章节时间是**近似**；
+要帧准确就上传 `04_edited.mp4` + 用 `06_chapters.txt` 当章节元数据。
 同时按章节序号给 SRT 时间戳加 `3*i` 秒，按各 slate / chap 实测时长重写
 `08_final_chapters.txt/.json`。
 
@@ -175,6 +201,18 @@ python3 scripts/09_make_publish_starter.py <video>
 - 六、**B 站粉丝动态**（≤233 字，投稿表单里独立字段，随视频自动推到粉丝 feed）
 - 七、上传前 checklist
 
+### 10. 清理中间产物（手动，**上传后**）
+
+```
+python3 scripts/99_cleanup.py <video>                            # dry-run，只列出将删什么
+python3 scripts/99_cleanup.py <video> --yes                      # safe：删 scratch，留所有成片+转写
+python3 scripts/99_cleanup.py <video> --minimal --keep 08 --yes  # 上传 08_final 后：只留它+发布包
+```
+**不被流程自动调用**——必须手动跑，避免上传前误删成片。`--keep {both,04,08}` 指定保留哪一版
+（删另一版的视频/字幕/章节）；`--minimal` 连转写 / cut list / covers(章节卡) 一起删，只剩上传
+需要的。永不删除：被保留版本的视频/字幕/章节、`09_publish_package.md`、`cover*.png`(主封面)。
+safe 档（不加 --minimal）只删 scratch，保留转写 + cut list（可复跑 05/06/...）。
+
 ## 一次性跑通的命令清单
 
 ```bash
@@ -184,12 +222,12 @@ VIDEO=/path/to/your/<video>.mp4
 # 1. 抽音频
 python3 "$SKILL/scripts/01_extract_audio.py" "$VIDEO"
 
-# 2. 转写（Mac 本地，用 whisper-cpp）
-cp "$SKILL/assets/run_transcribe.command" "$(dirname "$VIDEO")/"
-chmod +x "$(dirname "$VIDEO")/run_transcribe.command"
-# 双击它（或 bash 跑）；跑完会落 02_transcript.json/.txt
+# 2. 转写（API 优先；凭据放 ~/.config/live-replay/secrets.env）
+python3 "$SKILL/scripts/02d_transcribe_api.py" "$VIDEO"          # 默认 MiMo（中英混说最准）
+python3 "$SKILL/scripts/02e_clean_filler.py"   "$VIDEO"          # 可选：清字幕口癖（不动视频）
+# 离线兜底：cp assets/run_transcribe.command 到视频目录双击 → 再跑 02b
 
-# 3. cut list（你来读 02_transcript.txt → 写 03_cut_list.json）
+# 3. cut list（你来读 02_transcript.txt → 写 03_cut_list.json；等待段可加 "speed":8.0）
 
 # 3b. 自动剪静音
 python3 "$SKILL/scripts/03b_carve_silences.py" "$VIDEO" --min-gap 15
@@ -212,6 +250,9 @@ python3 "$SKILL/scripts/08_insert_covers.py" "$VIDEO"
 
 # 9. 发布包 starter（你来读 starter 里的 TODO，按 prompt 填掉）
 python3 "$SKILL/scripts/09_make_publish_starter.py" "$VIDEO"
+
+# 10. 清理中间产物（手动，**上传之后**再跑）
+python3 "$SKILL/scripts/99_cleanup.py" "$VIDEO" --minimal --yes
 ```
 
 ## 提示词在哪里

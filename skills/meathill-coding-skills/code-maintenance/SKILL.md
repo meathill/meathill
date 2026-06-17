@@ -1,14 +1,11 @@
 ---
 name: code-maintenance
 description: >
-  Skill for periodic codebase maintenance and hygiene. Use this skill whenever the user asks to
-  "maintain", "clean up", "refactor", "tidy up", or "improve code quality" of the codebase.
-  Also trigger when the user mentions: cleaning docs, adding tests, extracting shared code,
-  splitting large files, replacing hand-rolled utilities with libraries, or consolidating
-  duplicate code. Even partial mentions like "too many docs", "file is too big", "we should
-  use a library for this", "DRY up", "TODO comments piling up", "address FIXMEs", or
-  "clean up tech debt markers", cleaning completed GitHub issues, or pruning merged local
-  and remote branches should trigger this skill.
+  周期性代码库维护和质量治理：清理文档、补充测试、拆分大文件、提取共享代码、
+  合并重复逻辑、替换手写工具、处理 TODO/FIXME、清理已完成 GitHub issue，
+  以及修剪已合并的本地或远程分支。当用户要求 maintain、clean up、refactor、tidy up、
+  improve code quality、cleanup tech debt，或提到 "too many docs"、"file is too big"、
+  "DRY up"、"TODO comments piling up"、"address FIXMEs" 时触发。
 ---
 
 # Code Maintenance Skill

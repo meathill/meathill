@@ -1,11 +1,10 @@
 ---
 name: pr-review
 description: >
-  处理 PR Review 评论，分类并逐条响应。当用户提到"PR review"、"review message"、
-  "review 意见"、"review 留言"、"code review"、"审查意见"、"PR 评论"、
-  "review comments"、"处理 review"、"review 反馈"时触发。也适用于用户粘贴
-  review 内容、提供 PR URL 并要求处理 review、或说"帮我处理这些 review 意见"、
-  "处理这个 PR 里的 review"等场景。
+  处理 PR review 和 code review 评论：获取或解析 review 内容、分类优先级、
+  判断哪些意见需要修复、哪些应跳过，并协助逐条修改代码或组织回复。当用户提供 PR URL、
+  粘贴 reviewer 意见，或提到 "review message"、"review 意见"、"PR 评论"、
+  "处理 review"、"review 反馈"、"帮我处理这些 review 意见"时触发。
 ---
 
 # PR Review 处理技能

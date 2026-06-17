@@ -1,4 +1,4 @@
 interface:
   display_name: "Website Operator QA"
-  short_description: "Manual website QA from operator and client perspectives"
-  default_prompt: "Use $website-operator-qa to test this website from an operator and client perspective, execute the key journeys in a browser, and log concrete issues."
+  short_description: "从运营和客户视角手动测试网站、CMS 与业务流程验收"
+  default_prompt: "Use $website-operator-qa 帮我从运营和客户视角手动测试这个网站和 CMS，记录关键问题。"

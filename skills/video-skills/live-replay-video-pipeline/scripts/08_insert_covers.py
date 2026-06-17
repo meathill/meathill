@@ -29,16 +29,46 @@ def run(cmd, **kw):
     print("[run]", " ".join(str(c) for c in cmd), flush=True)
     return subprocess.run(cmd, check=True, **kw)
 
-def make_slate(png: Path, out: Path, dur: float = SLATE_SEC):
-    """Render a still PNG as a short mp4 with silent audio, codec params
-    matching the typical 1080p30 / aac stereo 48kHz of the edited video."""
+def probe_fps(p: Path) -> float:
+    r = subprocess.run(
+        ["ffprobe","-v","error","-select_streams","v:0",
+         "-show_entries","stream=r_frame_rate","-of","default=nk=1:np=0", str(p)],
+        capture_output=True, text=True,
+    )
+    val = (r.stdout or "").strip() or "30/1"
+    try:
+        num, den = val.split("/"); fps = float(num) / float(den)
+    except Exception:
+        fps = 30.0
+    return fps if fps > 0 else 30.0
+
+
+def probe_timescale(p: Path) -> int:
+    r = subprocess.run(
+        ["ffprobe","-v","error","-select_streams","v:0",
+         "-show_entries","stream=time_base","-of","default=nk=1:np=0", str(p)],
+        capture_output=True, text=True,
+    )
+    tb = (r.stdout or "").strip() or "1/90000"
+    try:
+        return int(tb.split("/")[1])
+    except Exception:
+        return 90000
+
+
+def make_slate(png: Path, out: Path, fps: float, timescale: int, dur: float = SLATE_SEC):
+    """Render a still PNG as a short silent mp4 whose video fps + timebase MATCH
+    04_edited.mp4, so the concat demuxer can stream-copy slate + chapter parts
+    (works for the 30fps speed path and the 60fps no-speed path alike)."""
+    fps_s = f"{fps:.6g}"
     cmd = [
         "ffmpeg", "-y",
-        "-loop", "1", "-framerate", "30", "-t", f"{dur:.3f}", "-i", str(png),
+        "-loop", "1", "-framerate", fps_s, "-t", f"{dur:.3f}", "-i", str(png),
         "-f", "lavfi", "-t", f"{dur:.3f}", "-i", "anullsrc=r=48000:cl=stereo",
         "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",
         "-pix_fmt", "yuv420p",
-        "-r", "30",
+        "-r", fps_s,
+        "-video_track_timescale", str(timescale),
         "-c:a", "aac", "-b:a", "160k", "-ar", "48000", "-ac", "2",
         "-movflags", "+faststart",
         "-shortest",
@@ -123,11 +153,14 @@ def main():
         print(f"[err] {len(cover_files)} covers vs {len(chapters)} chapters",
               file=sys.stderr)
         sys.exit(2)
+    edited_fps = probe_fps(edited)
+    edited_ts = probe_timescale(edited)
+    print(f"[info] matching slates to edited.mp4: {edited_fps:g}fps, timescale {edited_ts}")
     slates = []
     for i, cov in enumerate(cover_files, start=1):
         slate = work / f"slate_{i:02d}.mp4"
         if not slate.exists() or slate.stat().st_size == 0:
-            make_slate(cov, slate)
+            make_slate(cov, slate, edited_fps, edited_ts)
         slates.append(slate)
 
     # 2. Cut chapter parts from edited.mp4
@@ -188,6 +221,7 @@ def main():
     )
     print("[ok] final chapters:")
     print((out_dir / "08_final_chapters.txt").read_text())
+    shutil.rmtree(work, ignore_errors=True)  # 成功后清掉 _insert_work（否则会遗留数 GB 中间片段）
 
 if __name__ == "__main__":
     main()
