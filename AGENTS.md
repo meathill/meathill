@@ -94,7 +94,7 @@
   - 函数使用动词或动宾短语命名，类使用名词命名，bool 变量使用 is/has/can 开头
 - 使用图标时，应使用 `SaveIcon` 而不是 `Save`，避免引发歧义
 - 不要使用 `const handleXXX = () => {}` 声明函数，使用 `function handleXXX() {}` 来声明
-- 不要内嵌 SVG，使用第三方图标库，比如 lucide
+- 不要内嵌 SVG，使用第三方图标库，比如 [phosphor](https://phosphoricons.com)
 - 单组件、库、脚本的长度不要超过 400 行，尽量控制在 300 行附近
 
 ## 环境约定
