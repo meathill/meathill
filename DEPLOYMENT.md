@@ -12,6 +12,8 @@
 4. 打开 **Actions → Deploy product directory to GitHub Pages**，运行 `Run workflow`；如果推送已经触发成功，可以跳过手动运行。
 5. 等待 `deploy` job 完成，再访问目标地址。
 
+第一次推送发生在 Pages 启用之前时，workflow 会在 `Configure Pages` 失败，这是预期行为。完成第 3 步后重新运行即可，不需要修改代码。
+
 ### 后续更新
 
 修改 `products.json` 后执行：
