@@ -26,9 +26,12 @@ I have been building for the web since 2006. For 20+ years, I have worked across
 | **Free AI API** | 整理可以直接尝试的免费 AI API 与开发资源。 | A curated directory of free AI APIs and developer resources. | [Product](https://freeaiapi.org) |
 | **Meathill HSM** | 本地优先的密钥管理工具，安全保存和使用敏感配置。 | A local-first secrets manager for storing and using sensitive configuration safely. | [Product](https://hsm.meathill.com) · [Source](https://github.com/meathill/hsm) |
 
+See the [product directory](https://meathill.github.io/meathill/) or the maintained [repo ↔ website inventory](./PRODUCTS.md) for recent products, footer-link groups, and GitHub Pages DR plans.
+
 ## Find me / 找到我
 
 - [Personal site / 个人站](https://meathill.com)
+- [Product directory / 产品目录](https://meathill.github.io/meathill/)
 - [Writing / 技术文章](https://meathill.com/posts)
 - [YouTube](https://youtube.com/@meathill)
 - [X / Twitter](https://x.com/meathill1)

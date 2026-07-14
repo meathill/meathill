@@ -1,0 +1,10 @@
+{
+  "name": "@meathill/profile",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "format": "node scripts/products.ts generate",
+    "test": "node scripts/products.ts check && node scripts/product-site.ts check",
+    "build": "node scripts/product-site.ts build"
+  }
+}

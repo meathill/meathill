@@ -1,2 +1,6 @@
 .idea
 .DS_Store
+node_modules/
+.pnpm-store/
+dist/
+.playwright-cli/

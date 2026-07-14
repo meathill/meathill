@@ -1,0 +1,803 @@
+{
+  "version": 1,
+  "updatedOn": "2026-07-14",
+  "directory": {
+    "url": "https://meathill.github.io/meathill/",
+    "title": "Meathill 产品目录 | Products & Projects",
+    "description": "浏览 Meathill 近期开发和参与维护的产品、工具与实验项目，并在主站不可用时找到稳定入口。",
+    "siteName": "Meathill Product Directory",
+    "language": "zh-CN",
+    "locale": "zh_CN",
+    "imageUrl": "https://meathill.github.io/meathill/assets/profile-hero.png",
+    "imageAlt": "Meathill 产品星图"
+  },
+  "recency": {
+    "days": 90,
+    "since": "2026-04-15",
+    "coreRepositoryExceptions": ["meathill/hsm"]
+  },
+  "footerGroups": [
+    {
+      "id": "meathill-products",
+      "name": "Meathill 产品",
+      "maxDirectLinks": 6,
+      "directoryUrl": "https://meathill.github.io/meathill/"
+    },
+    {
+      "id": "muistory-network",
+      "name": "MuiStory 故事站",
+      "maxDirectLinks": 3,
+      "directoryUrl": "https://muistory.com"
+    },
+    {
+      "id": "downloader-network",
+      "name": "视频下载工具",
+      "maxDirectLinks": 4,
+      "directoryUrl": "https://xvideodownloader.org"
+    },
+    {
+      "id": "baifo-network",
+      "name": "拜拜产品",
+      "maxDirectLinks": 2,
+      "directoryUrl": "https://baifo.life"
+    }
+  ],
+  "repositories": [
+    {
+      "slug": "meathill/blog-2026",
+      "visibility": "public",
+      "defaultBranch": "master",
+      "lastActivityOn": "2026-07-14",
+      "pagesStatus": "not-enabled"
+    },
+    {
+      "slug": "meathill/mui-gamebook",
+      "visibility": "public",
+      "defaultBranch": "master",
+      "lastActivityOn": "2026-07-14",
+      "pagesStatus": "not-enabled"
+    },
+    {
+      "slug": "meathill/muicv",
+      "visibility": "public",
+      "defaultBranch": "master",
+      "lastActivityOn": "2026-07-13",
+      "pagesStatus": "not-enabled"
+    },
+    {
+      "slug": "meathill/mui-api",
+      "visibility": "public",
+      "defaultBranch": "master",
+      "lastActivityOn": "2026-07-12",
+      "pagesStatus": "not-enabled"
+    },
+    {
+      "slug": "meathill/evertools",
+      "visibility": "public",
+      "defaultBranch": "master",
+      "lastActivityOn": "2026-07-12",
+      "pagesStatus": "not-enabled"
+    },
+    {
+      "slug": "meathill/vibesite",
+      "visibility": "public",
+      "defaultBranch": "mui-ds",
+      "lastActivityOn": "2026-07-11",
+      "pagesStatus": "not-enabled"
+    },
+    {
+      "slug": "meathill/free-ai-api",
+      "visibility": "private",
+      "defaultBranch": "master",
+      "lastActivityOn": "2026-07-10",
+      "pagesStatus": "eligibility-unverified"
+    },
+    {
+      "slug": "meathill/dyqr",
+      "visibility": "private",
+      "defaultBranch": "master",
+      "lastActivityOn": "2026-07-05",
+      "pagesStatus": "eligibility-unverified"
+    },
+    {
+      "slug": "meathill/mui-ad",
+      "visibility": "public",
+      "defaultBranch": "master",
+      "lastActivityOn": "2026-06-29",
+      "pagesStatus": "not-enabled"
+    },
+    {
+      "slug": "meathill/mui-memo",
+      "visibility": "public",
+      "defaultBranch": "master",
+      "lastActivityOn": "2026-06-24",
+      "pagesStatus": "not-enabled"
+    },
+    {
+      "slug": "meathill/app-feedback",
+      "visibility": "public",
+      "defaultBranch": "master",
+      "lastActivityOn": "2026-06-23",
+      "pagesStatus": "not-enabled"
+    },
+    {
+      "slug": "meathill/dnd",
+      "visibility": "public",
+      "defaultBranch": "master",
+      "lastActivityOn": "2026-06-16",
+      "pagesStatus": "not-enabled"
+    },
+    {
+      "slug": "awesome-comment/saas",
+      "visibility": "private",
+      "defaultBranch": "master",
+      "lastActivityOn": "2026-06-04",
+      "pagesStatus": "eligibility-unverified"
+    },
+    {
+      "slug": "meathill/next-wordpress",
+      "visibility": "public",
+      "defaultBranch": "master",
+      "lastActivityOn": "2026-05-17",
+      "pagesStatus": "not-enabled"
+    },
+    {
+      "slug": "meathill/x-downloader",
+      "visibility": "private",
+      "defaultBranch": "master",
+      "lastActivityOn": "2026-07-14",
+      "pagesStatus": "eligibility-unverified"
+    },
+    {
+      "slug": "meathill/sf-aigc-hackathon-2023",
+      "visibility": "private",
+      "defaultBranch": "master",
+      "lastActivityOn": "2026-07-14",
+      "pagesStatus": "eligibility-unverified"
+    },
+    {
+      "slug": "caorlc/3D",
+      "visibility": "private",
+      "defaultBranch": "main",
+      "lastActivityOn": "2026-07-14",
+      "pagesStatus": "eligibility-unverified"
+    },
+    {
+      "slug": "caorlc/gazou",
+      "visibility": "private",
+      "defaultBranch": "main",
+      "lastActivityOn": "2026-07-14",
+      "pagesStatus": "eligibility-unverified"
+    },
+    {
+      "slug": "meathill/hsm",
+      "visibility": "public",
+      "defaultBranch": "master",
+      "lastActivityOn": "2026-03-08",
+      "pagesStatus": "not-enabled"
+    },
+    {
+      "slug": "meathill/mui-search",
+      "visibility": "public",
+      "defaultBranch": "main",
+      "lastActivityOn": "2026-04-18",
+      "pagesStatus": "not-planned"
+    }
+  ],
+  "sites": [
+    {
+      "id": "meathill",
+      "name": "Meathill",
+      "url": "https://meathill.com",
+      "summary": "肉山的个人网站，汇总产品、技术文章和持续开发记录。",
+      "repository": "meathill/blog-2026",
+      "ownership": "owned",
+      "footer": {
+        "status": "planned",
+        "groups": ["meathill-products"],
+        "priority": 100
+      },
+      "pages": {
+        "url": "https://meathill.github.io/blog-2026/",
+        "mode": "snapshot"
+      },
+      "health": {
+        "checkedOn": "2026-07-14",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "muicv",
+      "name": "MuiCV",
+      "url": "https://muicv.com",
+      "summary": "为不同岗位生成和优化定制简历，本地保存素材并导出 PDF。",
+      "repository": "meathill/muicv",
+      "ownership": "owned",
+      "footer": {
+        "status": "planned",
+        "groups": ["meathill-products"],
+        "priority": 95
+      },
+      "pages": {
+        "url": "https://meathill.github.io/muicv/",
+        "mode": "landing-only"
+      },
+      "health": {
+        "checkedOn": "2026-07-14",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "muirouter",
+      "name": "MuiRouter",
+      "url": "https://muirouter.com",
+      "summary": "用一个 API Key 接入多家 AI 模型，统一管理计费、配额与并发。",
+      "repository": "meathill/mui-api",
+      "ownership": "owned",
+      "footer": {
+        "status": "planned",
+        "groups": ["meathill-products"],
+        "priority": 90
+      },
+      "pages": {
+        "url": "https://meathill.github.io/mui-api/",
+        "mode": "landing-only"
+      },
+      "health": {
+        "checkedOn": "2026-07-14",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "muistory",
+      "name": "MuiStory",
+      "url": "https://muistory.com",
+      "summary": "AI 驱动的互动故事平台，让每一次选择真正改变剧情。",
+      "repository": "meathill/mui-gamebook",
+      "ownership": "owned",
+      "footer": {
+        "status": "planned",
+        "groups": ["meathill-products", "muistory-network"],
+        "priority": 85
+      },
+      "pages": {
+        "url": "https://meathill.github.io/mui-gamebook/",
+        "mode": "landing-only"
+      },
+      "health": {
+        "checkedOn": "2026-07-14",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "xiaoniaoshuo",
+      "name": "小鸟说",
+      "url": "https://xiaoniaoshuo.com",
+      "summary": "MuiStory 旗下的独立互动故事站，提供专属内容和阅读体验。",
+      "repository": "meathill/mui-gamebook",
+      "ownership": "owned",
+      "footer": {
+        "status": "planned",
+        "groups": ["muistory-network"],
+        "priority": 70
+      },
+      "pages": {
+        "url": "https://meathill.github.io/mui-gamebook/xiaoniaoshuo/",
+        "mode": "landing-only"
+      },
+      "health": {
+        "checkedOn": "2026-07-14",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "muistory-55",
+      "name": "55",
+      "url": "https://55.muistory.com",
+      "summary": "基于 MuiStory 的垂直互动故事站，用选择推动故事发展。",
+      "repository": "meathill/mui-gamebook",
+      "ownership": "owned",
+      "footer": {
+        "status": "planned",
+        "groups": ["muistory-network"],
+        "priority": 60
+      },
+      "pages": {
+        "url": "https://meathill.github.io/mui-gamebook/55/",
+        "mode": "landing-only"
+      },
+      "health": {
+        "checkedOn": "2026-07-14",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "evertools",
+      "name": "EverTools",
+      "url": "https://tools.meathill.com",
+      "summary": "在浏览器本地处理图片、PDF、JSON 和 Markdown，不上传原始文件。",
+      "repository": "meathill/evertools",
+      "ownership": "owned",
+      "footer": {
+        "status": "planned",
+        "groups": ["meathill-products"],
+        "priority": 80
+      },
+      "pages": {
+        "url": "https://meathill.github.io/evertools/",
+        "mode": "partial-static"
+      },
+      "health": {
+        "checkedOn": "2026-07-14",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "vibesite",
+      "name": "VibeSite",
+      "url": "https://vibe.meathill.com",
+      "summary": "把 AI 生成的网页文件交上来，快速获得一个真实可访问的链接。",
+      "repository": "meathill/vibesite",
+      "ownership": "owned",
+      "footer": {
+        "status": "planned",
+        "groups": ["meathill-products"],
+        "priority": 75
+      },
+      "pages": {
+        "url": "https://meathill.github.io/vibesite/",
+        "mode": "landing-only"
+      },
+      "health": {
+        "checkedOn": "2026-07-14",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "muiad",
+      "name": "MuiAD",
+      "url": "https://muiad.meathill.com",
+      "summary": "面向开发者的自托管广告网络，通过 MCP 管理产品、广告位和投放。",
+      "repository": "meathill/mui-ad",
+      "ownership": "owned",
+      "footer": {
+        "status": "planned",
+        "groups": ["meathill-products"],
+        "priority": 70
+      },
+      "pages": {
+        "url": "https://meathill.github.io/mui-ad/",
+        "mode": "landing-only"
+      },
+      "health": {
+        "checkedOn": "2026-07-14",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "muimemo",
+      "name": "MuiMemo",
+      "url": "https://muimemo.meathill.com",
+      "summary": "说一句话记下待办，AI 按时间和场景自动整理，在合适的时候提醒你。",
+      "repository": "meathill/mui-memo",
+      "ownership": "owned",
+      "footer": {
+        "status": "planned",
+        "groups": ["meathill-products"],
+        "priority": 65
+      },
+      "pages": {
+        "url": "https://meathill.github.io/mui-memo/",
+        "mode": "landing-only"
+      },
+      "health": {
+        "checkedOn": "2026-07-14",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "muirpg",
+      "name": "MuiRPG",
+      "url": "https://muirpg.meathill.com",
+      "summary": "AI 跑团工具，在开放选择与清晰规则之间创造持续发展的冒险。",
+      "repository": "meathill/dnd",
+      "ownership": "owned",
+      "footer": {
+        "status": "planned",
+        "groups": ["meathill-products"],
+        "priority": 60
+      },
+      "pages": {
+        "url": "https://meathill.github.io/dnd/",
+        "mode": "landing-only"
+      },
+      "health": {
+        "checkedOn": "2026-07-14",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "free-ai-api",
+      "name": "Free AI API",
+      "url": "https://freeaiapi.org",
+      "summary": "整理可以直接尝试的免费 AI API、模型服务和开发资源。",
+      "repository": "meathill/free-ai-api",
+      "ownership": "owned",
+      "footer": {
+        "status": "planned",
+        "groups": ["meathill-products"],
+        "priority": 55
+      },
+      "pages": {
+        "url": "https://meathill.github.io/free-ai-api/",
+        "mode": "snapshot"
+      },
+      "health": {
+        "checkedOn": "2026-07-14",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "dyqr",
+      "name": "DYQR",
+      "url": "https://dyqr.me",
+      "summary": "创建可随时修改目标地址的二维码和短链，并查看访问数据。",
+      "repository": "meathill/dyqr",
+      "ownership": "owned",
+      "footer": {
+        "status": "planned",
+        "groups": ["meathill-products"],
+        "priority": 50
+      },
+      "pages": {
+        "url": "https://meathill.github.io/dyqr/",
+        "mode": "landing-only"
+      },
+      "health": {
+        "checkedOn": "2026-07-14",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "x-video-downloader",
+      "name": "X Video Downloader",
+      "url": "https://xvideodownloader.org",
+      "summary": "下载 X 和 Twitter 视频、直播回放与公开媒体内容。",
+      "repository": "meathill/x-downloader",
+      "ownership": "owned",
+      "footer": {
+        "status": "planned",
+        "groups": ["downloader-network"],
+        "priority": 100
+      },
+      "pages": {
+        "url": "https://meathill.github.io/x-downloader/",
+        "mode": "landing-only"
+      },
+      "health": {
+        "checkedOn": "2026-07-14",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "youtube-downloader",
+      "name": "YouTube Downloader",
+      "url": "https://youtubedownloader.win",
+      "summary": "下载 YouTube 视频、音频和直播回放，支持常见输出格式。",
+      "repository": "meathill/x-downloader",
+      "ownership": "owned",
+      "footer": {
+        "status": "planned",
+        "groups": ["downloader-network"],
+        "priority": 90
+      },
+      "pages": {
+        "url": "https://meathill.github.io/x-downloader/youtube/",
+        "mode": "landing-only"
+      },
+      "health": {
+        "checkedOn": "2026-07-14",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "tiktok-downloader",
+      "name": "TikTok Downloader",
+      "url": "https://tiktokdownloader.win",
+      "summary": "下载公开的 TikTok 视频，保存适合离线观看的媒体文件。",
+      "repository": "meathill/x-downloader",
+      "ownership": "owned",
+      "footer": {
+        "status": "planned",
+        "groups": ["downloader-network"],
+        "priority": 80
+      },
+      "pages": {
+        "url": "https://meathill.github.io/x-downloader/tiktok/",
+        "mode": "landing-only"
+      },
+      "health": {
+        "checkedOn": "2026-07-14",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "instagram-video-download",
+      "name": "Instagram Video Download",
+      "url": "https://instagramvideodownload.net",
+      "summary": "下载公开的 Instagram 视频与媒体内容，方便离线保存。",
+      "repository": "meathill/x-downloader",
+      "ownership": "owned",
+      "footer": {
+        "status": "planned",
+        "groups": ["downloader-network"],
+        "priority": 70
+      },
+      "pages": {
+        "url": "https://meathill.github.io/x-downloader/instagram/",
+        "mode": "landing-only"
+      },
+      "health": {
+        "checkedOn": "2026-07-14",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "baifo",
+      "name": "拜拜",
+      "url": "https://baifo.life",
+      "summary": "在线烧香、敲木鱼和记录心愿，在日常生活里留一段安静时间。",
+      "repository": "meathill/sf-aigc-hackathon-2023",
+      "ownership": "owned",
+      "footer": {
+        "status": "planned",
+        "groups": ["meathill-products", "baifo-network"],
+        "priority": 45
+      },
+      "pages": {
+        "url": "https://meathill.github.io/sf-aigc-hackathon-2023/",
+        "mode": "snapshot"
+      },
+      "health": {
+        "checkedOn": "2026-07-14",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "qian",
+      "name": "拜拜祈愿",
+      "url": "https://qian.baifo.life",
+      "summary": "写下愿望、保存祈愿内容，并随时回看自己的心愿记录。",
+      "repository": "meathill/sf-aigc-hackathon-2023",
+      "ownership": "owned",
+      "footer": {
+        "status": "planned",
+        "groups": ["baifo-network"],
+        "priority": 40
+      },
+      "pages": {
+        "url": "https://meathill.github.io/sf-aigc-hackathon-2023/qian/",
+        "mode": "snapshot"
+      },
+      "health": {
+        "checkedOn": "2026-07-14",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "hsm",
+      "name": "Meathill HSM",
+      "url": "https://hsm.meathill.com",
+      "summary": "本地优先保存和使用敏感配置，减少密钥散落在文件和剪贴板里的风险。",
+      "repository": "meathill/hsm",
+      "ownership": "owned",
+      "footer": {
+        "status": "planned",
+        "groups": ["meathill-products"],
+        "priority": 40
+      },
+      "pages": {
+        "url": "https://meathill.github.io/hsm/",
+        "mode": "partial-static"
+      },
+      "health": {
+        "checkedOn": "2026-07-14",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "app-feedback",
+      "name": "App Feedback",
+      "url": "https://feedback.roudan.io",
+      "summary": "帮助独立开发者收集、翻译和管理来自网站与应用的用户反馈。",
+      "repository": "meathill/app-feedback",
+      "ownership": "partner",
+      "footer": {
+        "status": "review-required",
+        "groups": [],
+        "priority": 0
+      },
+      "pages": {
+        "url": "https://meathill.github.io/app-feedback/",
+        "mode": "landing-only"
+      },
+      "health": {
+        "checkedOn": "2026-07-14",
+        "status": "error",
+        "error": "TLS handshake failed"
+      }
+    },
+    {
+      "id": "ai3dmodel",
+      "name": "AI 3D Model",
+      "url": "https://ai3dmodel.app",
+      "summary": "用 AI 生成和编辑 3D 模型，管理贴图、重拓扑和模型资产。",
+      "repository": "caorlc/3D",
+      "ownership": "partner",
+      "footer": {
+        "status": "review-required",
+        "groups": [],
+        "priority": 0
+      },
+      "pages": {
+        "url": "https://caorlc.github.io/3D/",
+        "mode": "landing-only"
+      },
+      "health": {
+        "checkedOn": "2026-07-14",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "aigazou",
+      "name": "AIGazou",
+      "url": "https://aigazou.net",
+      "summary": "生成和管理 AI 图片与视频，并保存可继续使用的创作资产。",
+      "repository": "caorlc/gazou",
+      "ownership": "partner",
+      "footer": {
+        "status": "review-required",
+        "groups": [],
+        "priority": 0
+      },
+      "pages": {
+        "url": "https://caorlc.github.io/gazou/",
+        "mode": "landing-only"
+      },
+      "health": {
+        "checkedOn": "2026-07-14",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "two-n-forged",
+      "name": "2NFORGED",
+      "url": "https://2nforged.com",
+      "summary": "面向美国市场的汽车改装零件商店，提供车型适配、选购和结账。",
+      "repository": "meathill/next-wordpress",
+      "ownership": "partner",
+      "footer": {
+        "status": "review-required",
+        "groups": [],
+        "priority": 0
+      },
+      "pages": {
+        "url": "https://meathill.github.io/next-wordpress/",
+        "mode": "snapshot"
+      },
+      "health": {
+        "checkedOn": "2026-07-14",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "awesome-comment",
+      "name": "Awesome Comment",
+      "url": "https://awesomecomment.org",
+      "summary": "为静态站和现代 Web 应用提供评论、审核、翻译与站点管理。",
+      "repository": "awesome-comment/saas",
+      "ownership": "partner",
+      "footer": {
+        "status": "review-required",
+        "groups": [],
+        "priority": 0
+      },
+      "pages": {
+        "url": "https://awesome-comment.github.io/saas/",
+        "mode": "snapshot"
+      },
+      "health": {
+        "checkedOn": "2026-07-14",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "mui-search",
+      "name": "Mui Search API",
+      "url": "https://mui-search.meathill.com",
+      "summary": "结合全文检索与语义搜索的无服务器搜索服务，为其他产品提供查询能力。",
+      "repository": "meathill/mui-search",
+      "ownership": "owned",
+      "footer": {
+        "status": "excluded",
+        "groups": [],
+        "priority": 0
+      },
+      "pages": {
+        "url": "https://meathill.github.io/mui-search/",
+        "mode": "not-applicable"
+      },
+      "health": {
+        "checkedOn": "2026-07-14",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    }
+  ],
+  "excludedRepositories": [
+    {
+      "repository": "meathill/mr-hype",
+      "lastActivityOn": "2026-07-09",
+      "reason": "未发现生产站点"
+    },
+    {
+      "repository": "meathill/vitesite",
+      "lastActivityOn": "2026-07-09",
+      "reason": "未发现生产站点"
+    },
+    {
+      "repository": "meathill/live-screen",
+      "lastActivityOn": "2026-06-26",
+      "reason": "本地辅助工具，无公开产品站"
+    },
+    {
+      "repository": "meathill/italking",
+      "lastActivityOn": "2026-06-22",
+      "reason": "未发现生产站点"
+    },
+    {
+      "repository": "meathill/mui-db-viewer",
+      "lastActivityOn": "2026-06-14",
+      "reason": "本地应用，无公开产品站"
+    },
+    {
+      "repository": "meathill/norm-bridge",
+      "lastActivityOn": "2026-05-23",
+      "reason": "未发现生产站点"
+    },
+    {
+      "repository": "meathill/dnd-games",
+      "lastActivityOn": "2026-05-03",
+      "reason": "未发现独立生产站点"
+    },
+    {
+      "repository": "meathill/resume",
+      "lastActivityOn": "2026-04-24",
+      "reason": "未发现生产站点"
+    }
+  ]
+}
