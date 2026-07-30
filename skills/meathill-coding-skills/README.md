@@ -65,6 +65,7 @@ copied them, copy again after updating.
 
 ## What's new
 
+- **1.3.4** — Requires customer quotations to retain itemized work packages, estimated hours, module subtotals, and total effort for credibility and change control, while still hiding AI conversion, internal rates, risk reasoning, and unselected pricing tiers.
 - **1.3.3** — Distinguishes customer-visible revision history from internal drafting: quotations may record changes already known to and verifiable by the customer, while internal estimation, restructuring, discarded approaches, and draft evolution stay private.
 - **1.3.2** — Keeps customer-facing quotations focused on the final project scope and commercial terms, excluding internal planning rationale, prior-draft commentary, and revision-process language.
 - **1.3.1** — Makes **project-quote** product-first: plan roles, end-to-end workflows, states, and shared domain objects before deriving modules and work packages; count shared capabilities once; quote only the single service tier explicitly selected by the user.

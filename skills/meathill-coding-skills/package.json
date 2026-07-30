@@ -1,6 +1,6 @@
 {
   "name": "meathill-coding-skills",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "Agent skills for Gemini CLI, Claude Code, and other AI agents by Meathill.",
   "main": "index.js",
   "files": [
