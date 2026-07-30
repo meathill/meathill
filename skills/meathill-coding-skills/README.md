@@ -65,6 +65,7 @@ copied them, copy again after updating.
 
 ## What's new
 
+- **1.3.2** — Keeps customer-facing quotations focused on the final project scope and commercial terms, excluding internal planning rationale, prior-draft commentary, and revision-process language.
 - **1.3.1** — Makes **project-quote** product-first: plan roles, end-to-end workflows, states, and shared domain objects before deriving modules and work packages; count shared capabilities once; quote only the single service tier explicitly selected by the user.
 - **1.3.0** — Reworks **project-quote** for current AI-assisted delivery: coding baselines use 10% of traditional experience time; auxiliary work is quoted at 20% / 45% / 80%; every quote includes itemized work, non-separately-priced delivery baselines, customer-paid costs, payment/handoff/acceptance/maintenance terms, and budget-aware technology options. The inventory now records proven multi-Worker + Queue + Web architecture experience.
 - **1.2.0** — Adds **product-content-audit**: a two-stage skill (audit report
