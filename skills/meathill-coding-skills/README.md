@@ -65,6 +65,7 @@ copied them, copy again after updating.
 
 ## What's new
 
+- **1.3.0** — Reworks **project-quote** for current AI-assisted delivery: coding baselines use 10% of traditional experience time; auxiliary work is quoted at 20% / 45% / 80%; every quote includes itemized work, non-separately-priced delivery baselines, customer-paid costs, payment/handoff/acceptance/maintenance terms, and budget-aware technology options. The inventory now records proven multi-Worker + Queue + Web architecture experience.
 - **1.2.0** — Adds **product-content-audit**: a two-stage skill (audit report
   first, then apply) for reviewing user-facing copy in the repo from a
   non-technical user's perspective. Targets the common case where AI-assisted
