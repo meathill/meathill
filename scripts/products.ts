@@ -7,6 +7,10 @@ export type Ownership = 'owned' | 'partner';
 export type PagesMode = 'snapshot' | 'partial-static' | 'landing-only' | 'not-applicable';
 export type PagesStatus = 'not-enabled' | 'eligibility-unverified' | 'not-planned';
 export type RepositoryVisibility = 'public' | 'private';
+export type BrandSiteType = 'public-product' | 'experiment' | 'service' | 'resource' | 'legacy';
+export type BrandVisibility = 'public' | 'unlisted' | 'internal';
+export type BrandMode = 'full' | 'hybrid' | 'compact' | 'none';
+export type NavigationGroup = 'studio' | 'products' | 'experiments' | 'none';
 
 export interface FooterGroup {
   id: string;
@@ -47,11 +51,23 @@ export interface Site {
   };
 }
 
+export interface BrandDomain {
+  host: string;
+  siteId?: string;
+  name: string;
+  type: BrandSiteType;
+  visibility: BrandVisibility;
+  brandMode: BrandMode;
+  defaultLocale: string;
+  navigationGroup: NavigationGroup;
+}
+
 export interface Inventory {
   version: number;
   updatedOn: string;
   directory: {
     url: string;
+    fallbackUrl: string;
     title: string;
     description: string;
     siteName: string;
@@ -59,6 +75,15 @@ export interface Inventory {
     locale: string;
     imageUrl: string;
     imageAlt: string;
+  };
+  brandNetwork: {
+    organization: {
+      id: string;
+      name: string;
+      legalName: string;
+      url: string;
+    };
+    domains: BrandDomain[];
   };
   recency: {
     days: number;
@@ -108,12 +133,15 @@ function assertBasicShape(value: unknown): asserts value is Inventory {
   assertCondition(Array.isArray(value.excludedRepositories), 'excludedRepositories 必须是数组');
   assertCondition(isRecord(value.recency), 'recency 必须是对象');
   assertCondition(isRecord(value.directory), 'directory 必须是对象');
+  assertCondition(isRecord(value.brandNetwork), 'brandNetwork 必须是对象');
+  assertCondition(Array.isArray(value.brandNetwork.domains), 'brandNetwork.domains 必须是数组');
 }
 
 function validateInventory(inventory: Inventory): void {
   assertCondition(inventory.version === 1, '仅支持 version=1');
   assertCondition(ISO_DATE_PATTERN.test(inventory.updatedOn), 'updatedOn 必须是 YYYY-MM-DD');
   assertCondition(isHttpsUrl(inventory.directory.url), 'directory.url 必须使用 HTTPS');
+  assertCondition(isHttpsUrl(inventory.directory.fallbackUrl), 'directory.fallbackUrl 必须使用 HTTPS');
   assertCondition(isHttpsUrl(inventory.directory.imageUrl), 'directory.imageUrl 必须使用 HTTPS');
   assertCondition(inventory.directory.title.length >= 20, 'directory.title 信息不足');
   assertCondition(inventory.directory.description.length >= 40, 'directory.description 信息不足');
@@ -207,6 +235,42 @@ function validateInventory(inventory: Inventory): void {
     pagesUrls.add(site.pages.url);
   }
 
+  assertCondition(
+    inventory.brandNetwork.organization.id === 'https://meathill.com/#organization',
+    '品牌组织 @id 必须固定为 https://meathill.com/#organization',
+  );
+  assertCondition(inventory.brandNetwork.organization.name === 'Meathill Studio', '公众母品牌必须是 Meathill Studio');
+  assertCondition(inventory.brandNetwork.organization.legalName === 'Meathill LLC', '法律主体必须是 Meathill LLC');
+  assertCondition(isHttpsUrl(inventory.brandNetwork.organization.url), '品牌组织 URL 必须使用 HTTPS');
+
+  const brandHosts = new Set<string>();
+  for (const domain of inventory.brandNetwork.domains) {
+    assertCondition(domain.host === domain.host.toLowerCase(), `品牌 host 必须小写: ${domain.host}`);
+    assertCondition(!domain.host.includes('://') && domain.host.includes('.'), `品牌 host 不合法: ${domain.host}`);
+    assertCondition(!brandHosts.has(domain.host), `品牌 host 重复: ${domain.host}`);
+    assertCondition(domain.name.length > 0, `${domain.host} 缺少名称`);
+    assertCondition(domain.defaultLocale.length > 0, `${domain.host} 缺少默认语言`);
+
+    if (domain.siteId) {
+      assertCondition(siteIds.has(domain.siteId), `${domain.host} 引用了未知站点 ${domain.siteId}`);
+    }
+
+    if (domain.visibility === 'public') {
+      assertCondition(domain.siteId !== undefined, `${domain.host} 公开展示但没有 siteId`);
+      assertCondition(domain.brandMode !== 'none', `${domain.host} 公开展示但没有品牌壳`);
+      assertCondition(
+        domain.type === 'public-product' || domain.type === 'experiment',
+        `${domain.host} 的类型不允许公开展示`,
+      );
+      assertCondition(domain.navigationGroup !== 'none', `${domain.host} 公开展示但没有导航分组`);
+    } else {
+      assertCondition(domain.brandMode === 'none', `${domain.host} 非公开站点不应安装品牌壳`);
+      assertCondition(domain.navigationGroup === 'none', `${domain.host} 非公开站点不应进入导航分组`);
+    }
+
+    brandHosts.add(domain.host);
+  }
+
   for (const repository of inventory.excludedRepositories) {
     assertCondition(REPOSITORY_PATTERN.test(repository.repository), `排除的 repository slug 不合法: ${repository.repository}`);
     assertCondition(ISO_DATE_PATTERN.test(repository.lastActivityOn), `${repository.repository} 的活动日期不合法`);
@@ -267,7 +331,7 @@ function renderSiteTable(sites: Site[], repositories: Map<string, Repository>): 
   return lines;
 }
 
-function renderMarkdown(inventory: Inventory): string {
+export function renderMarkdown(inventory: Inventory): string {
   const repositories = new Map(inventory.repositories.map((repository) => [repository.slug, repository]));
   const sortedSites = [...inventory.sites].sort((first, second) => {
     const firstActivity = repositories.get(first.repository)?.lastActivityOn ?? '';

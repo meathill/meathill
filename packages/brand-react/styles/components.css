@@ -1,0 +1,248 @@
+@import "meathill-brand/tokens.css";
+
+.meathill-brand-header,
+.meathill-brand-footer,
+.meathill-brand-breadcrumb {
+  box-sizing: border-box;
+  color: var(--meathill-ink);
+  font-family: var(--meathill-font-sans);
+  font-size: 14px;
+}
+
+.meathill-brand-header *,
+.meathill-brand-footer *,
+.meathill-brand-breadcrumb * {
+  box-sizing: border-box;
+}
+
+.meathill-brand-header {
+  position: relative;
+  z-index: 40;
+  border-bottom: 1px solid var(--meathill-rule);
+  background: color-mix(in srgb, var(--meathill-cream) 90%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+.meathill-brand-header-full {
+  position: sticky;
+  top: 0;
+}
+
+.meathill-brand-header-inner,
+.meathill-brand-footer-inner {
+  width: min(100% - 32px, 1152px);
+  margin-inline: auto;
+}
+
+.meathill-brand-header-inner {
+  display: flex;
+  min-height: 56px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.meathill-brand-header-compact .meathill-brand-header-inner {
+  min-height: 40px;
+}
+
+.meathill-brand-identity,
+.meathill-brand-header-actions {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 12px;
+}
+
+.meathill-brand-studio-link,
+.meathill-brand-product-link,
+.meathill-brand-footer a,
+.meathill-brand-breadcrumb a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.meathill-brand-studio-link {
+  font-family: var(--meathill-font-display);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.meathill-brand-product-link {
+  overflow: hidden;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.meathill-brand-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--meathill-rule-strong);
+}
+
+.meathill-brand-switcher {
+  position: relative;
+}
+
+.meathill-brand-switcher summary {
+  border-radius: var(--meathill-radius);
+  padding: 6px 8px;
+  color: var(--meathill-ink-soft);
+  cursor: pointer;
+  list-style: none;
+  transition: background var(--meathill-transition), color var(--meathill-transition);
+}
+
+.meathill-brand-switcher summary::-webkit-details-marker {
+  display: none;
+}
+
+.meathill-brand-switcher summary:hover,
+.meathill-brand-switcher[open] summary {
+  background: var(--meathill-fluff);
+  color: var(--meathill-ink);
+}
+
+.meathill-brand-switcher summary:focus-visible,
+.meathill-brand-header a:focus-visible,
+.meathill-brand-footer a:focus-visible,
+.meathill-brand-breadcrumb a:focus-visible {
+  outline: none;
+  box-shadow: var(--meathill-focus-ring);
+}
+
+.meathill-brand-switcher-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: min(320px, calc(100vw - 32px));
+  border: 1px solid var(--meathill-rule-strong);
+  border-radius: var(--meathill-radius-large);
+  padding: 8px;
+  background: var(--meathill-paper);
+  box-shadow: 0 10px 20px -5px rgb(58 46 35 / 0.16);
+}
+
+.meathill-brand-switcher-panel ul {
+  display: grid;
+  max-height: min(480px, 70vh);
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.meathill-brand-switcher-panel li a,
+.meathill-brand-directory-link {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  border-radius: var(--meathill-radius);
+  padding: 8px 10px;
+  color: var(--meathill-ink-soft);
+  text-decoration: none;
+}
+
+.meathill-brand-switcher-panel li a:hover,
+.meathill-brand-switcher-panel li a[aria-current="page"] {
+  background: var(--meathill-fluff);
+  color: var(--meathill-ink);
+}
+
+.meathill-brand-switcher-panel small {
+  color: var(--meathill-mute);
+  font-family: var(--meathill-font-mono);
+  font-size: 12px;
+}
+
+.meathill-brand-directory-link {
+  margin-top: 8px;
+  border-top: 1px solid var(--meathill-rule);
+  border-radius: 0 0 var(--meathill-radius) var(--meathill-radius);
+  color: var(--meathill-yellow-deep);
+  font-weight: 700;
+}
+
+.meathill-brand-footer {
+  border-top: 1px solid var(--meathill-rule);
+  background: var(--meathill-paper);
+}
+
+.meathill-brand-footer-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(240px, 0.8fr);
+  gap: 32px;
+  padding-block: 32px;
+}
+
+.meathill-brand-footer-about {
+  display: grid;
+  max-width: 640px;
+  gap: 8px;
+}
+
+.meathill-brand-footer-about > a {
+  font-family: var(--meathill-font-display);
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.meathill-brand-footer p {
+  margin: 0;
+  color: var(--meathill-ink-soft);
+  line-height: 1.6;
+}
+
+.meathill-brand-footer small {
+  color: var(--meathill-mute);
+  font-size: 12px;
+}
+
+.meathill-brand-footer-nav {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.meathill-brand-footer-nav a:hover,
+.meathill-brand-breadcrumb a:hover {
+  color: var(--meathill-yellow-deep);
+}
+
+.meathill-brand-breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  color: var(--meathill-mute);
+  list-style: none;
+}
+
+.meathill-brand-breadcrumb li:not(:last-child)::after {
+  content: "/";
+  margin-left: 8px;
+  color: var(--meathill-rule-strong);
+}
+
+.meathill-brand-breadcrumb [aria-current="page"] {
+  color: var(--meathill-ink);
+}
+
+@media (max-width: 720px) {
+  .meathill-brand-header-inner {
+    min-height: 48px;
+  }
+
+  .meathill-brand-studio-link {
+    font-size: 14px;
+  }
+
+  .meathill-brand-footer-inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}

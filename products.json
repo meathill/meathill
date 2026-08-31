@@ -1,8 +1,9 @@
 {
   "version": 1,
-  "updatedOn": "2026-07-14",
+  "updatedOn": "2026-08-28",
   "directory": {
-    "url": "https://meathill.github.io/meathill/",
+    "url": "https://meathill.com/app",
+    "fallbackUrl": "https://meathill.github.io/meathill/",
     "title": "Meathill 产品目录 | Products & Projects",
     "description": "浏览 Meathill 近期开发和参与维护的产品、工具与实验项目，并在主站不可用时找到稳定入口。",
     "siteName": "Meathill Product Directory",
@@ -13,15 +14,199 @@
   },
   "recency": {
     "days": 90,
-    "since": "2026-04-15",
-    "coreRepositoryExceptions": ["meathill/hsm"]
+    "since": "2026-05-09",
+    "coreRepositoryExceptions": ["meathill/hsm", "meathill/carrot-word"]
+  },
+  "brandNetwork": {
+    "organization": {
+      "id": "https://meathill.com/#organization",
+      "name": "Meathill Studio",
+      "legalName": "Meathill LLC",
+      "url": "https://meathill.com"
+    },
+    "domains": [
+      {
+        "host": "meathill.com",
+        "siteId": "meathill",
+        "name": "Meathill Studio",
+        "type": "public-product",
+        "visibility": "public",
+        "brandMode": "full",
+        "defaultLocale": "zh",
+        "navigationGroup": "studio"
+      },
+      {
+        "host": "tools.meathill.com",
+        "siteId": "evertools",
+        "name": "EverTools",
+        "type": "public-product",
+        "visibility": "public",
+        "brandMode": "full",
+        "defaultLocale": "en",
+        "navigationGroup": "products"
+      },
+      {
+        "host": "muimemo.meathill.com",
+        "siteId": "muimemo",
+        "name": "MuiMemo",
+        "type": "public-product",
+        "visibility": "public",
+        "brandMode": "hybrid",
+        "defaultLocale": "zh",
+        "navigationGroup": "products"
+      },
+      {
+        "host": "muiad.meathill.com",
+        "siteId": "muiad",
+        "name": "MuiAD",
+        "type": "public-product",
+        "visibility": "public",
+        "brandMode": "full",
+        "defaultLocale": "en",
+        "navigationGroup": "products"
+      },
+      {
+        "host": "hsm.meathill.com",
+        "siteId": "hsm",
+        "name": "Meathill HSM",
+        "type": "public-product",
+        "visibility": "public",
+        "brandMode": "full",
+        "defaultLocale": "zh",
+        "navigationGroup": "products"
+      },
+      {
+        "host": "minesweeper.meathill.com",
+        "siteId": "minesweeper",
+        "name": "扫雷",
+        "type": "experiment",
+        "visibility": "public",
+        "brandMode": "compact",
+        "defaultLocale": "zh",
+        "navigationGroup": "experiments"
+      },
+      {
+        "host": "waka.meathill.com",
+        "siteId": "waka",
+        "name": "Waka",
+        "type": "public-product",
+        "visibility": "public",
+        "brandMode": "full",
+        "defaultLocale": "en",
+        "navigationGroup": "products"
+      },
+      {
+        "host": "feedback.meathill.com",
+        "siteId": "app-feedback",
+        "name": "App Feedback",
+        "type": "public-product",
+        "visibility": "public",
+        "brandMode": "full",
+        "defaultLocale": "en",
+        "navigationGroup": "products"
+      },
+      {
+        "host": "everband.meathill.com",
+        "siteId": "everband",
+        "name": "Everband",
+        "type": "public-product",
+        "visibility": "public",
+        "brandMode": "full",
+        "defaultLocale": "en",
+        "navigationGroup": "products"
+      },
+      {
+        "host": "everband-app.meathill.com",
+        "siteId": "everband",
+        "name": "Everband App",
+        "type": "public-product",
+        "visibility": "public",
+        "brandMode": "hybrid",
+        "defaultLocale": "en",
+        "navigationGroup": "products"
+      },
+      {
+        "host": "vibe.meathill.com",
+        "siteId": "vibesite",
+        "name": "VibeSite",
+        "type": "experiment",
+        "visibility": "public",
+        "brandMode": "full",
+        "defaultLocale": "zh",
+        "navigationGroup": "experiments"
+      },
+      {
+        "host": "muirpg.meathill.com",
+        "siteId": "muirpg",
+        "name": "MuiRPG",
+        "type": "experiment",
+        "visibility": "public",
+        "brandMode": "hybrid",
+        "defaultLocale": "zh",
+        "navigationGroup": "experiments"
+      },
+      {
+        "host": "mui-search.meathill.com",
+        "name": "Mui Search API",
+        "type": "service",
+        "visibility": "unlisted",
+        "brandMode": "none",
+        "defaultLocale": "en",
+        "navigationGroup": "none"
+      },
+      {
+        "host": "api.muiad.meathill.com",
+        "name": "MuiAD API",
+        "type": "service",
+        "visibility": "internal",
+        "brandMode": "none",
+        "defaultLocale": "en",
+        "navigationGroup": "none"
+      },
+      {
+        "host": "admin.muiad.meathill.com",
+        "name": "MuiAD Admin",
+        "type": "service",
+        "visibility": "internal",
+        "brandMode": "none",
+        "defaultLocale": "en",
+        "navigationGroup": "none"
+      },
+      {
+        "host": "i.meathill.com",
+        "name": "Meathill Media",
+        "type": "resource",
+        "visibility": "unlisted",
+        "brandMode": "none",
+        "defaultLocale": "en",
+        "navigationGroup": "none"
+      },
+      {
+        "host": "ii.meathill.com",
+        "name": "Meathill Media II",
+        "type": "resource",
+        "visibility": "unlisted",
+        "brandMode": "none",
+        "defaultLocale": "en",
+        "navigationGroup": "none"
+      },
+      {
+        "host": "blog.meathill.com",
+        "name": "Meathill Blog Legacy",
+        "type": "legacy",
+        "visibility": "unlisted",
+        "brandMode": "none",
+        "defaultLocale": "zh",
+        "navigationGroup": "none"
+      }
+    ]
   },
   "footerGroups": [
     {
       "id": "meathill-products",
       "name": "Meathill 产品",
       "maxDirectLinks": 6,
-      "directoryUrl": "https://meathill.github.io/meathill/"
+      "directoryUrl": "https://meathill.com/app"
     },
     {
       "id": "muistory-network",
@@ -31,9 +216,9 @@
     },
     {
       "id": "downloader-network",
-      "name": "视频下载工具",
-      "maxDirectLinks": 4,
-      "directoryUrl": "https://xvideodownloader.org"
+      "name": "My Playlist",
+      "maxDirectLinks": 1,
+      "directoryUrl": "https://my-playlist.app"
     },
     {
       "id": "baifo-network",
@@ -47,56 +232,49 @@
       "slug": "meathill/blog-2026",
       "visibility": "public",
       "defaultBranch": "master",
-      "lastActivityOn": "2026-07-14",
+      "lastActivityOn": "2026-07-27",
       "pagesStatus": "not-enabled"
     },
     {
       "slug": "meathill/mui-gamebook",
       "visibility": "public",
       "defaultBranch": "master",
-      "lastActivityOn": "2026-07-14",
+      "lastActivityOn": "2026-07-28",
       "pagesStatus": "not-enabled"
     },
     {
       "slug": "meathill/muicv",
       "visibility": "public",
       "defaultBranch": "master",
-      "lastActivityOn": "2026-07-13",
+      "lastActivityOn": "2026-07-27",
       "pagesStatus": "not-enabled"
     },
     {
       "slug": "meathill/mui-api",
       "visibility": "public",
       "defaultBranch": "master",
-      "lastActivityOn": "2026-07-12",
+      "lastActivityOn": "2026-08-03",
       "pagesStatus": "not-enabled"
     },
     {
       "slug": "meathill/evertools",
       "visibility": "public",
       "defaultBranch": "master",
-      "lastActivityOn": "2026-07-12",
-      "pagesStatus": "not-enabled"
-    },
-    {
-      "slug": "meathill/vibesite",
-      "visibility": "public",
-      "defaultBranch": "mui-ds",
-      "lastActivityOn": "2026-07-11",
+      "lastActivityOn": "2026-08-01",
       "pagesStatus": "not-enabled"
     },
     {
       "slug": "meathill/free-ai-api",
       "visibility": "private",
       "defaultBranch": "master",
-      "lastActivityOn": "2026-07-10",
+      "lastActivityOn": "2026-08-06",
       "pagesStatus": "eligibility-unverified"
     },
     {
       "slug": "meathill/dyqr",
       "visibility": "private",
       "defaultBranch": "master",
-      "lastActivityOn": "2026-07-05",
+      "lastActivityOn": "2026-08-04",
       "pagesStatus": "eligibility-unverified"
     },
     {
@@ -110,7 +288,7 @@
       "slug": "meathill/mui-memo",
       "visibility": "public",
       "defaultBranch": "master",
-      "lastActivityOn": "2026-06-24",
+      "lastActivityOn": "2026-07-18",
       "pagesStatus": "not-enabled"
     },
     {
@@ -121,10 +299,45 @@
       "pagesStatus": "not-enabled"
     },
     {
+      "slug": "meathill/minesweeper",
+      "visibility": "public",
+      "defaultBranch": "master",
+      "lastActivityOn": "2026-08-27",
+      "pagesStatus": "not-enabled"
+    },
+    {
+      "slug": "meathill/carrot-word",
+      "visibility": "public",
+      "defaultBranch": "master",
+      "lastActivityOn": "2026-01-24",
+      "pagesStatus": "not-enabled"
+    },
+    {
+      "slug": "meathill/everband",
+      "visibility": "public",
+      "defaultBranch": "master",
+      "lastActivityOn": "2026-08-16",
+      "pagesStatus": "not-enabled"
+    },
+    {
+      "slug": "meathill/vibesite",
+      "visibility": "public",
+      "defaultBranch": "master",
+      "lastActivityOn": "2026-08-11",
+      "pagesStatus": "not-enabled"
+    },
+    {
       "slug": "meathill/dnd",
       "visibility": "public",
       "defaultBranch": "master",
       "lastActivityOn": "2026-06-16",
+      "pagesStatus": "not-enabled"
+    },
+    {
+      "slug": "meathill/taomenu",
+      "visibility": "public",
+      "defaultBranch": "master",
+      "lastActivityOn": "2026-08-07",
       "pagesStatus": "not-enabled"
     },
     {
@@ -145,14 +358,14 @@
       "slug": "meathill/x-downloader",
       "visibility": "private",
       "defaultBranch": "master",
-      "lastActivityOn": "2026-07-14",
+      "lastActivityOn": "2026-08-08",
       "pagesStatus": "eligibility-unverified"
     },
     {
       "slug": "meathill/sf-aigc-hackathon-2023",
       "visibility": "private",
       "defaultBranch": "master",
-      "lastActivityOn": "2026-07-14",
+      "lastActivityOn": "2026-08-07",
       "pagesStatus": "eligibility-unverified"
     },
     {
@@ -175,13 +388,6 @@
       "defaultBranch": "master",
       "lastActivityOn": "2026-03-08",
       "pagesStatus": "not-enabled"
-    },
-    {
-      "slug": "meathill/mui-search",
-      "visibility": "public",
-      "defaultBranch": "main",
-      "lastActivityOn": "2026-04-18",
-      "pagesStatus": "not-planned"
     }
   ],
   "sites": [
@@ -274,50 +480,6 @@
       }
     },
     {
-      "id": "xiaoniaoshuo",
-      "name": "小鸟说",
-      "url": "https://xiaoniaoshuo.com",
-      "summary": "MuiStory 旗下的独立互动故事站，提供专属内容和阅读体验。",
-      "repository": "meathill/mui-gamebook",
-      "ownership": "owned",
-      "footer": {
-        "status": "planned",
-        "groups": ["muistory-network"],
-        "priority": 70
-      },
-      "pages": {
-        "url": "https://meathill.github.io/mui-gamebook/xiaoniaoshuo/",
-        "mode": "landing-only"
-      },
-      "health": {
-        "checkedOn": "2026-07-14",
-        "status": "ok",
-        "httpStatus": 200
-      }
-    },
-    {
-      "id": "muistory-55",
-      "name": "55",
-      "url": "https://55.muistory.com",
-      "summary": "基于 MuiStory 的垂直互动故事站，用选择推动故事发展。",
-      "repository": "meathill/mui-gamebook",
-      "ownership": "owned",
-      "footer": {
-        "status": "planned",
-        "groups": ["muistory-network"],
-        "priority": 60
-      },
-      "pages": {
-        "url": "https://meathill.github.io/mui-gamebook/55/",
-        "mode": "landing-only"
-      },
-      "health": {
-        "checkedOn": "2026-07-14",
-        "status": "ok",
-        "httpStatus": 200
-      }
-    },
-    {
       "id": "evertools",
       "name": "EverTools",
       "url": "https://tools.meathill.com",
@@ -332,28 +494,6 @@
       "pages": {
         "url": "https://meathill.github.io/evertools/",
         "mode": "partial-static"
-      },
-      "health": {
-        "checkedOn": "2026-07-14",
-        "status": "ok",
-        "httpStatus": 200
-      }
-    },
-    {
-      "id": "vibesite",
-      "name": "VibeSite",
-      "url": "https://vibe.meathill.com",
-      "summary": "把 AI 生成的网页文件交上来，快速获得一个真实可访问的链接。",
-      "repository": "meathill/vibesite",
-      "ownership": "owned",
-      "footer": {
-        "status": "planned",
-        "groups": ["meathill-products"],
-        "priority": 75
-      },
-      "pages": {
-        "url": "https://meathill.github.io/vibesite/",
-        "mode": "landing-only"
       },
       "health": {
         "checkedOn": "2026-07-14",
@@ -406,11 +546,55 @@
       }
     },
     {
-      "id": "muirpg",
-      "name": "MuiRPG",
-      "url": "https://muirpg.meathill.com",
-      "summary": "AI 跑团工具，在开放选择与清晰规则之间创造持续发展的冒险。",
-      "repository": "meathill/dnd",
+      "id": "minesweeper",
+      "name": "扫雷",
+      "url": "https://minesweeper.meathill.com",
+      "summary": "保留经典规则与计时统计的在线扫雷游戏，适合桌面和移动端随时开一局。",
+      "repository": "meathill/minesweeper",
+      "ownership": "owned",
+      "footer": {
+        "status": "planned",
+        "groups": ["meathill-products"],
+        "priority": 35
+      },
+      "pages": {
+        "url": "https://meathill.github.io/minesweeper/",
+        "mode": "partial-static"
+      },
+      "health": {
+        "checkedOn": "2026-08-28",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "waka",
+      "name": "Waka",
+      "url": "https://waka.meathill.com",
+      "summary": "帮助用户积累和练习词汇的跨端应用，并提供公开下载与产品说明入口。",
+      "repository": "meathill/carrot-word",
+      "ownership": "owned",
+      "footer": {
+        "status": "planned",
+        "groups": ["meathill-products"],
+        "priority": 45
+      },
+      "pages": {
+        "url": "https://meathill.github.io/carrot-word/",
+        "mode": "landing-only"
+      },
+      "health": {
+        "checkedOn": "2026-08-28",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "everband",
+      "name": "Everband",
+      "url": "https://everband.meathill.com",
+      "summary": "帮助社区乐队管理成员、活动、排练、通知和公共事务的协作工作空间。",
+      "repository": "meathill/everband",
       "ownership": "owned",
       "footer": {
         "status": "planned",
@@ -418,11 +602,55 @@
         "priority": 60
       },
       "pages": {
+        "url": "https://meathill.github.io/everband/",
+        "mode": "landing-only"
+      },
+      "health": {
+        "checkedOn": "2026-08-28",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "vibesite",
+      "name": "VibeSite",
+      "url": "https://vibe.meathill.com",
+      "summary": "把 AI 生成的网页文件交上来，快速获得一个真实可访问的公开链接。",
+      "repository": "meathill/vibesite",
+      "ownership": "owned",
+      "footer": {
+        "status": "planned",
+        "groups": ["meathill-products"],
+        "priority": 50
+      },
+      "pages": {
+        "url": "https://meathill.github.io/vibesite/",
+        "mode": "landing-only"
+      },
+      "health": {
+        "checkedOn": "2026-08-28",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "muirpg",
+      "name": "MuiRPG",
+      "url": "https://muirpg.meathill.com",
+      "summary": "选择模组和人物卡，与 AI 一起完成遵循清晰规则、持续发展的线上跑团。",
+      "repository": "meathill/dnd",
+      "ownership": "owned",
+      "footer": {
+        "status": "planned",
+        "groups": ["meathill-products"],
+        "priority": 40
+      },
+      "pages": {
         "url": "https://meathill.github.io/dnd/",
         "mode": "landing-only"
       },
       "health": {
-        "checkedOn": "2026-07-14",
+        "checkedOn": "2026-08-28",
         "status": "ok",
         "httpStatus": 200
       }
@@ -472,10 +700,32 @@
       }
     },
     {
-      "id": "x-video-downloader",
-      "name": "X Video Downloader",
-      "url": "https://xvideodownloader.org",
-      "summary": "下载 X 和 Twitter 视频、直播回放与公开媒体内容。",
+      "id": "taomenu",
+      "name": "TaoMenu",
+      "url": "https://menu.dyqr.me",
+      "summary": "为餐饮和小型商家制作可随时更新的在线菜单，并通过独立应用管理菜单内容。",
+      "repository": "meathill/taomenu",
+      "ownership": "owned",
+      "footer": {
+        "status": "planned",
+        "groups": ["meathill-products"],
+        "priority": 85
+      },
+      "pages": {
+        "url": "https://meathill.github.io/taomenu/",
+        "mode": "landing-only"
+      },
+      "health": {
+        "checkedOn": "2026-08-08",
+        "status": "ok",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "my-playlist",
+      "name": "My Playlist",
+      "url": "https://my-playlist.app",
+      "summary": "把来自 X、YouTube、Instagram 和 TikTok 的公开视频整理到自己的收藏与下载工作流里。",
       "repository": "meathill/x-downloader",
       "ownership": "owned",
       "footer": {
@@ -484,77 +734,11 @@
         "priority": 100
       },
       "pages": {
-        "url": "https://meathill.github.io/x-downloader/",
+        "url": "https://meathill.github.io/x-downloader/my-playlist/",
         "mode": "landing-only"
       },
       "health": {
-        "checkedOn": "2026-07-14",
-        "status": "ok",
-        "httpStatus": 200
-      }
-    },
-    {
-      "id": "youtube-downloader",
-      "name": "YouTube Downloader",
-      "url": "https://youtubedownloader.win",
-      "summary": "下载 YouTube 视频、音频和直播回放，支持常见输出格式。",
-      "repository": "meathill/x-downloader",
-      "ownership": "owned",
-      "footer": {
-        "status": "planned",
-        "groups": ["downloader-network"],
-        "priority": 90
-      },
-      "pages": {
-        "url": "https://meathill.github.io/x-downloader/youtube/",
-        "mode": "landing-only"
-      },
-      "health": {
-        "checkedOn": "2026-07-14",
-        "status": "ok",
-        "httpStatus": 200
-      }
-    },
-    {
-      "id": "tiktok-downloader",
-      "name": "TikTok Downloader",
-      "url": "https://tiktokdownloader.win",
-      "summary": "下载公开的 TikTok 视频，保存适合离线观看的媒体文件。",
-      "repository": "meathill/x-downloader",
-      "ownership": "owned",
-      "footer": {
-        "status": "planned",
-        "groups": ["downloader-network"],
-        "priority": 80
-      },
-      "pages": {
-        "url": "https://meathill.github.io/x-downloader/tiktok/",
-        "mode": "landing-only"
-      },
-      "health": {
-        "checkedOn": "2026-07-14",
-        "status": "ok",
-        "httpStatus": 200
-      }
-    },
-    {
-      "id": "instagram-video-download",
-      "name": "Instagram Video Download",
-      "url": "https://instagramvideodownload.net",
-      "summary": "下载公开的 Instagram 视频与媒体内容，方便离线保存。",
-      "repository": "meathill/x-downloader",
-      "ownership": "owned",
-      "footer": {
-        "status": "planned",
-        "groups": ["downloader-network"],
-        "priority": 70
-      },
-      "pages": {
-        "url": "https://meathill.github.io/x-downloader/instagram/",
-        "mode": "landing-only"
-      },
-      "health": {
-        "checkedOn": "2026-07-14",
+        "checkedOn": "2026-08-08",
         "status": "ok",
         "httpStatus": 200
       }
@@ -628,23 +812,23 @@
     {
       "id": "app-feedback",
       "name": "App Feedback",
-      "url": "https://feedback.roudan.io",
+      "url": "https://feedback.meathill.com",
       "summary": "帮助独立开发者收集、翻译和管理来自网站与应用的用户反馈。",
       "repository": "meathill/app-feedback",
-      "ownership": "partner",
+      "ownership": "owned",
       "footer": {
-        "status": "review-required",
-        "groups": [],
-        "priority": 0
+        "status": "planned",
+        "groups": ["meathill-products"],
+        "priority": 45
       },
       "pages": {
         "url": "https://meathill.github.io/app-feedback/",
         "mode": "landing-only"
       },
       "health": {
-        "checkedOn": "2026-07-14",
-        "status": "error",
-        "error": "TLS handshake failed"
+        "checkedOn": "2026-08-28",
+        "status": "ok",
+        "httpStatus": 200
       }
     },
     {
@@ -734,31 +918,14 @@
         "status": "ok",
         "httpStatus": 200
       }
-    },
-    {
-      "id": "mui-search",
-      "name": "Mui Search API",
-      "url": "https://mui-search.meathill.com",
-      "summary": "结合全文检索与语义搜索的无服务器搜索服务，为其他产品提供查询能力。",
-      "repository": "meathill/mui-search",
-      "ownership": "owned",
-      "footer": {
-        "status": "excluded",
-        "groups": [],
-        "priority": 0
-      },
-      "pages": {
-        "url": "https://meathill.github.io/mui-search/",
-        "mode": "not-applicable"
-      },
-      "health": {
-        "checkedOn": "2026-07-14",
-        "status": "ok",
-        "httpStatus": 200
-      }
     }
   ],
   "excludedRepositories": [
+    {
+      "repository": "meathill/mui-search",
+      "lastActivityOn": "2026-04-18",
+      "reason": "用户明确不纳入本轮产品同步"
+    },
     {
       "repository": "meathill/mr-hype",
       "lastActivityOn": "2026-07-09",

@@ -1,6 +1,6 @@
 # 产品 Repo ↔ 网站清单
 
-更新时间：2026-07-14。近期窗口：2026-04-15 至 2026-07-14（90 天）。
+更新时间：2026-08-28。近期窗口：2026-05-09 至 2026-08-28（90 天）。
 
 `products.json` 是单一数据源；本文件由 `pnpm run format` 生成，请勿手动维护表格。
 
@@ -8,27 +8,26 @@
 
 | 产品 / 网站 | Repo | 最近开发 | Footer | GitHub Pages DR | 主站检查 |
 | --- | --- | --- | --- | --- | --- |
-| [Meathill](https://meathill.com) | [meathill/blog-2026](https://github.com/meathill/blog-2026) | 2026-07-14 | 待接入：meathill-products | 未启用，只读快照<br>`https://meathill.github.io/blog-2026/` | 200（2026-07-14） |
-| [X Video Downloader](https://xvideodownloader.org) | `meathill/x-downloader`（私有） | 2026-07-14 | 待接入：downloader-network | 账号资格待确认，仅降级页<br>`https://meathill.github.io/x-downloader/` | 200（2026-07-14） |
-| [YouTube Downloader](https://youtubedownloader.win) | `meathill/x-downloader`（私有） | 2026-07-14 | 待接入：downloader-network | 账号资格待确认，仅降级页<br>`https://meathill.github.io/x-downloader/youtube/` | 200（2026-07-14） |
-| [MuiStory](https://muistory.com) | [meathill/mui-gamebook](https://github.com/meathill/mui-gamebook) | 2026-07-14 | 待接入：meathill-products、muistory-network | 未启用，仅降级页<br>`https://meathill.github.io/mui-gamebook/` | 200（2026-07-14） |
-| [TikTok Downloader](https://tiktokdownloader.win) | `meathill/x-downloader`（私有） | 2026-07-14 | 待接入：downloader-network | 账号资格待确认，仅降级页<br>`https://meathill.github.io/x-downloader/tiktok/` | 200（2026-07-14） |
-| [小鸟说](https://xiaoniaoshuo.com) | [meathill/mui-gamebook](https://github.com/meathill/mui-gamebook) | 2026-07-14 | 待接入：muistory-network | 未启用，仅降级页<br>`https://meathill.github.io/mui-gamebook/xiaoniaoshuo/` | 200（2026-07-14） |
-| [Instagram Video Download](https://instagramvideodownload.net) | `meathill/x-downloader`（私有） | 2026-07-14 | 待接入：downloader-network | 账号资格待确认，仅降级页<br>`https://meathill.github.io/x-downloader/instagram/` | 200（2026-07-14） |
-| [55](https://55.muistory.com) | [meathill/mui-gamebook](https://github.com/meathill/mui-gamebook) | 2026-07-14 | 待接入：muistory-network | 未启用，仅降级页<br>`https://meathill.github.io/mui-gamebook/55/` | 200（2026-07-14） |
-| [拜拜](https://baifo.life) | `meathill/sf-aigc-hackathon-2023`（私有） | 2026-07-14 | 待接入：meathill-products、baifo-network | 账号资格待确认，只读快照<br>`https://meathill.github.io/sf-aigc-hackathon-2023/` | 200（2026-07-14） |
-| [拜拜祈愿](https://qian.baifo.life) | `meathill/sf-aigc-hackathon-2023`（私有） | 2026-07-14 | 待接入：baifo-network | 账号资格待确认，只读快照<br>`https://meathill.github.io/sf-aigc-hackathon-2023/qian/` | 200（2026-07-14） |
-| [MuiCV](https://muicv.com) | [meathill/muicv](https://github.com/meathill/muicv) | 2026-07-13 | 待接入：meathill-products | 未启用，仅降级页<br>`https://meathill.github.io/muicv/` | 200（2026-07-14） |
-| [MuiRouter](https://muirouter.com) | [meathill/mui-api](https://github.com/meathill/mui-api) | 2026-07-12 | 待接入：meathill-products | 未启用，仅降级页<br>`https://meathill.github.io/mui-api/` | 200（2026-07-14） |
-| [EverTools](https://tools.meathill.com) | [meathill/evertools](https://github.com/meathill/evertools) | 2026-07-12 | 待接入：meathill-products | 未启用，部分静态可用<br>`https://meathill.github.io/evertools/` | 200（2026-07-14） |
-| [VibeSite](https://vibe.meathill.com) | [meathill/vibesite](https://github.com/meathill/vibesite) | 2026-07-11 | 待接入：meathill-products | 未启用，仅降级页<br>`https://meathill.github.io/vibesite/` | 200（2026-07-14） |
-| [Free AI API](https://freeaiapi.org) | `meathill/free-ai-api`（私有） | 2026-07-10 | 待接入：meathill-products | 账号资格待确认，只读快照<br>`https://meathill.github.io/free-ai-api/` | 200（2026-07-14） |
-| [DYQR](https://dyqr.me) | `meathill/dyqr`（私有） | 2026-07-05 | 待接入：meathill-products | 账号资格待确认，仅降级页<br>`https://meathill.github.io/dyqr/` | 200（2026-07-14） |
+| [扫雷](https://minesweeper.meathill.com) | [meathill/minesweeper](https://github.com/meathill/minesweeper) | 2026-08-27 | 待接入：meathill-products | 未启用，部分静态可用<br>`https://meathill.github.io/minesweeper/` | 200（2026-08-28） |
+| [Everband](https://everband.meathill.com) | [meathill/everband](https://github.com/meathill/everband) | 2026-08-16 | 待接入：meathill-products | 未启用，仅降级页<br>`https://meathill.github.io/everband/` | 200（2026-08-28） |
+| [VibeSite](https://vibe.meathill.com) | [meathill/vibesite](https://github.com/meathill/vibesite) | 2026-08-11 | 待接入：meathill-products | 未启用，仅降级页<br>`https://meathill.github.io/vibesite/` | 200（2026-08-28） |
+| [My Playlist](https://my-playlist.app) | `meathill/x-downloader`（私有） | 2026-08-08 | 待接入：downloader-network | 账号资格待确认，仅降级页<br>`https://meathill.github.io/x-downloader/my-playlist/` | 200（2026-08-08） |
+| [TaoMenu](https://menu.dyqr.me) | [meathill/taomenu](https://github.com/meathill/taomenu) | 2026-08-07 | 待接入：meathill-products | 未启用，仅降级页<br>`https://meathill.github.io/taomenu/` | 200（2026-08-08） |
+| [拜拜](https://baifo.life) | `meathill/sf-aigc-hackathon-2023`（私有） | 2026-08-07 | 待接入：meathill-products、baifo-network | 账号资格待确认，只读快照<br>`https://meathill.github.io/sf-aigc-hackathon-2023/` | 200（2026-07-14） |
+| [拜拜祈愿](https://qian.baifo.life) | `meathill/sf-aigc-hackathon-2023`（私有） | 2026-08-07 | 待接入：baifo-network | 账号资格待确认，只读快照<br>`https://meathill.github.io/sf-aigc-hackathon-2023/qian/` | 200（2026-07-14） |
+| [Free AI API](https://freeaiapi.org) | `meathill/free-ai-api`（私有） | 2026-08-06 | 待接入：meathill-products | 账号资格待确认，只读快照<br>`https://meathill.github.io/free-ai-api/` | 200（2026-07-14） |
+| [DYQR](https://dyqr.me) | `meathill/dyqr`（私有） | 2026-08-04 | 待接入：meathill-products | 账号资格待确认，仅降级页<br>`https://meathill.github.io/dyqr/` | 200（2026-07-14） |
+| [MuiRouter](https://muirouter.com) | [meathill/mui-api](https://github.com/meathill/mui-api) | 2026-08-03 | 待接入：meathill-products | 未启用，仅降级页<br>`https://meathill.github.io/mui-api/` | 200（2026-07-14） |
+| [EverTools](https://tools.meathill.com) | [meathill/evertools](https://github.com/meathill/evertools) | 2026-08-01 | 待接入：meathill-products | 未启用，部分静态可用<br>`https://meathill.github.io/evertools/` | 200（2026-07-14） |
+| [MuiStory](https://muistory.com) | [meathill/mui-gamebook](https://github.com/meathill/mui-gamebook) | 2026-07-28 | 待接入：meathill-products、muistory-network | 未启用，仅降级页<br>`https://meathill.github.io/mui-gamebook/` | 200（2026-07-14） |
+| [Meathill](https://meathill.com) | [meathill/blog-2026](https://github.com/meathill/blog-2026) | 2026-07-27 | 待接入：meathill-products | 未启用，只读快照<br>`https://meathill.github.io/blog-2026/` | 200（2026-07-14） |
+| [MuiCV](https://muicv.com) | [meathill/muicv](https://github.com/meathill/muicv) | 2026-07-27 | 待接入：meathill-products | 未启用，仅降级页<br>`https://meathill.github.io/muicv/` | 200（2026-07-14） |
+| [MuiMemo](https://muimemo.meathill.com) | [meathill/mui-memo](https://github.com/meathill/mui-memo) | 2026-07-18 | 待接入：meathill-products | 未启用，仅降级页<br>`https://meathill.github.io/mui-memo/` | 200（2026-07-14） |
 | [MuiAD](https://muiad.meathill.com) | [meathill/mui-ad](https://github.com/meathill/mui-ad) | 2026-06-29 | 待接入：meathill-products | 未启用，仅降级页<br>`https://meathill.github.io/mui-ad/` | 200（2026-07-14） |
-| [MuiMemo](https://muimemo.meathill.com) | [meathill/mui-memo](https://github.com/meathill/mui-memo) | 2026-06-24 | 待接入：meathill-products | 未启用，仅降级页<br>`https://meathill.github.io/mui-memo/` | 200（2026-07-14） |
-| [MuiRPG](https://muirpg.meathill.com) | [meathill/dnd](https://github.com/meathill/dnd) | 2026-06-16 | 待接入：meathill-products | 未启用，仅降级页<br>`https://meathill.github.io/dnd/` | 200（2026-07-14） |
-| [Mui Search API](https://mui-search.meathill.com) | [meathill/mui-search](https://github.com/meathill/mui-search) | 2026-04-18 | 不接入 | 不适用 | 200（2026-07-14） |
+| [App Feedback](https://feedback.meathill.com) | [meathill/app-feedback](https://github.com/meathill/app-feedback) | 2026-06-23 | 待接入：meathill-products | 未启用，仅降级页<br>`https://meathill.github.io/app-feedback/` | 200（2026-08-28） |
+| [MuiRPG](https://muirpg.meathill.com) | [meathill/dnd](https://github.com/meathill/dnd) | 2026-06-16 | 待接入：meathill-products | 未启用，仅降级页<br>`https://meathill.github.io/dnd/` | 200（2026-08-28） |
 | [Meathill HSM](https://hsm.meathill.com) | [meathill/hsm](https://github.com/meathill/hsm) | 2026-03-08 | 待接入：meathill-products | 未启用，部分静态可用<br>`https://meathill.github.io/hsm/` | 200（2026-07-14） |
+| [Waka](https://waka.meathill.com) | [meathill/carrot-word](https://github.com/meathill/carrot-word) | 2026-01-24 | 待接入：meathill-products | 未启用，仅降级页<br>`https://meathill.github.io/carrot-word/` | 200（2026-08-28） |
 
 ## 合作产品
 
@@ -38,7 +37,6 @@
 | --- | --- | --- | --- | --- | --- |
 | [AI 3D Model](https://ai3dmodel.app) | `caorlc/3D`（私有） | 2026-07-14 | 需与合作方确认 | 账号资格待确认，仅降级页<br>`https://caorlc.github.io/3D/` | 200（2026-07-14） |
 | [AIGazou](https://aigazou.net) | `caorlc/gazou`（私有） | 2026-07-14 | 需与合作方确认 | 账号资格待确认，仅降级页<br>`https://caorlc.github.io/gazou/` | 200（2026-07-14） |
-| [App Feedback](https://feedback.roudan.io) | [meathill/app-feedback](https://github.com/meathill/app-feedback) | 2026-06-23 | 需与合作方确认 | 未启用，仅降级页<br>`https://meathill.github.io/app-feedback/` | 异常：TLS handshake failed（2026-07-14） |
 | [Awesome Comment](https://awesomecomment.org) | `awesome-comment/saas`（私有） | 2026-06-04 | 需与合作方确认 | 账号资格待确认，只读快照<br>`https://awesome-comment.github.io/saas/` | 200（2026-07-14） |
 | [2NFORGED](https://2nforged.com) | [meathill/next-wordpress](https://github.com/meathill/next-wordpress) | 2026-05-17 | 需与合作方确认 | 未启用，只读快照<br>`https://meathill.github.io/next-wordpress/` | 200（2026-07-14） |
 
@@ -68,3 +66,4 @@
 | `meathill/norm-bridge` | 2026-05-23 | 未发现生产站点 |
 | `meathill/dnd-games` | 2026-05-03 | 未发现独立生产站点 |
 | `meathill/resume` | 2026-04-24 | 未发现生产站点 |
+| `meathill/mui-search` | 2026-04-18 | 用户明确不纳入本轮产品同步 |

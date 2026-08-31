@@ -1,0 +1,42 @@
+:root {
+  --meathill-cream: #fdfaf2;
+  --meathill-paper: #f6efde;
+  --meathill-paper-deep: #ede2c5;
+  --meathill-fluff: #fbf1d8;
+  --meathill-corgi: #f3c574;
+  --meathill-yellow: #e6c34a;
+  --meathill-yellow-warm: #e6a23a;
+  --meathill-yellow-deep: #b3851c;
+  --meathill-ink: #3a2e23;
+  --meathill-ink-soft: #5a4938;
+  --meathill-mute: #8a7660;
+  --meathill-rule: #e0d3b8;
+  --meathill-rule-strong: #c9b790;
+  --meathill-radius: 6px;
+  --meathill-radius-large: 10px;
+  --meathill-focus-ring: 0 0 0 3px rgb(230 195 74 / 0.4);
+  --meathill-font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --meathill-font-sans: "Nunito", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --meathill-font-mono: "JetBrains Mono", "SF Mono", Menlo, monospace;
+  --meathill-transition: 160ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.dark,
+[data-theme="dark"] {
+  --meathill-cream: #1a1410;
+  --meathill-paper: #231b14;
+  --meathill-paper-deep: #31251b;
+  --meathill-fluff: #3a2b1d;
+  --meathill-ink: #f3e9d5;
+  --meathill-ink-soft: #d8cbb6;
+  --meathill-mute: #ad9b83;
+  --meathill-rule: #493a2d;
+  --meathill-rule-strong: #6a5642;
+  --meathill-yellow-deep: #e6b240;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --meathill-transition: 0ms;
+  }
+}

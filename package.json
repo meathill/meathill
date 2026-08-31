@@ -2,9 +2,19 @@
   "name": "@meathill/profile",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@10.33.0",
   "scripts": {
-    "format": "node scripts/products.ts generate",
-    "test": "node scripts/products.ts check && node scripts/product-site.ts check",
-    "build": "node scripts/product-site.ts build"
+    "format": "node scripts/products.ts generate && node scripts/brand-catalog.ts generate",
+    "test": "node scripts/products.ts check && node scripts/brand-catalog.ts check && node scripts/product-site.ts check && pnpm --filter meathill-brand build && pnpm -r test",
+    "typecheck": "pnpm --filter meathill-brand build && pnpm -r typecheck",
+    "build": "node scripts/brand-catalog.ts generate && node scripts/product-site.ts build && pnpm -r build"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "typescript": "^5.9.0",
+    "vitest": "^4.0.0"
   }
 }

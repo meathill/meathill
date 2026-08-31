@@ -1,0 +1,35 @@
+{
+  "name": "meathill-brand-react",
+  "version": "0.1.0",
+  "description": "Meathill Studio 跨站 Header、Footer、SiteSwitcher 与 Breadcrumb",
+  "type": "module",
+  "license": "MIT",
+  "sideEffects": ["styles/*.css"],
+  "files": ["dist", "styles"],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./styles/components.css"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "peerDependencies": {
+    "meathill-brand": "^0.1.0",
+    "react": ">=18"
+  },
+  "devDependencies": {
+    "meathill-brand": "workspace:*",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
