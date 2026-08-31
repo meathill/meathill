@@ -12,6 +12,7 @@ running into across projects.
 | **pr-review** | "PR review", "review 意见", "处理 review 留言", "review comments" |
 | **product-content-audit** | "改文案", "把开发者语言改成人话", "页面跟最近功能不同步", "缺下载/升级链接", "做一次产品内容审查", "SEO/meta 检查" |
 | **project-quote** | "报价", "估价", "工时评估", "给客户报价", "竞品分析报价" |
+| **seo-audit** | "全站 SEO 审计", "GSC/Bing 关键词", "Google Trends", "SEO issue" |
 | **website-operator-qa** | "网站测试用例", "运营/客户视角验收", "manual QA", "操作录像缺陷" |
 
 Every skill ships as a single `SKILL.md` containing the trigger description in
@@ -28,8 +29,8 @@ each skill folder you want into that directory:
 npm install meathill-coding-skills
 mkdir -p ~/.claude/skills
 
-# Link all four
-for s in code-maintenance pr-review project-quote website-operator-qa; do
+# Link all six
+for s in code-maintenance pr-review product-content-audit project-quote seo-audit website-operator-qa; do
   ln -sf "$(pwd)/node_modules/meathill-coding-skills/$s" ~/.claude/skills/$s
 done
 ```
