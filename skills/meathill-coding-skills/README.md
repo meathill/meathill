@@ -12,7 +12,7 @@ running into across projects.
 | **pr-review** | "PR review", "review 意见", "处理 review 留言", "review comments" |
 | **product-content-audit** | "改文案", "把开发者语言改成人话", "页面跟最近功能不同步", "缺下载/升级链接", "做一次产品内容审查", "SEO/meta 检查" |
 | **project-quote** | "报价", "估价", "工时评估", "给客户报价", "竞品分析报价" |
-| **seo-audit** | "全站 SEO 审计", "GSC/Bing 关键词", "Google Trends", "SEO issue" |
+| **seo-audit** | "全站 SEO 审计", "SEO 体检", "GSC/Bing 关键词", "Google Trends", "SEO issue", "复查上一轮审计" |
 | **website-operator-qa** | "网站测试用例", "运营/客户视角验收", "manual QA", "操作录像缺陷" |
 
 Every skill ships as a single `SKILL.md` containing the trigger description in
@@ -66,6 +66,7 @@ copied them, copy again after updating.
 
 ## What's new
 
+- **1.4.0** — Upgrades **seo-audit** to v2: a local audit config (site/repo map, exclusions, known-intentional settings, known-stale console reports, run history) replaces hardcoded site lists; adds script-driven public checks (PSI/CrUX with API key, sitemap URL sweep, JSON-LD validation, cache headers, hreflang, AI-crawler UA and agent-readiness, Common Crawl backlink floor), Yandex Webmaster and Cloudflare checks, mandatory re-verification of console errors before reporting, cross-source dedup, "changes since last run", and a close-the-loop step that records run history in the local private config and lists suggested skill improvements in the report (changing the skill itself needs separate approval and review). Audits stay read-only; GitHub issues are only drafted unless the user explicitly asks to create or update them.
 - **1.3.4** — Requires customer quotations to retain itemized work packages, estimated hours, module subtotals, and total effort for credibility and change control, while still hiding AI conversion, internal rates, risk reasoning, and unselected pricing tiers.
 - **1.3.3** — Distinguishes customer-visible revision history from internal drafting: quotations may record changes already known to and verifiable by the customer, while internal estimation, restructuring, discarded approaches, and draft evolution stay private.
 - **1.3.2** — Keeps customer-facing quotations focused on the final project scope and commercial terms, excluding internal planning rationale, prior-draft commentary, and revision-process language.

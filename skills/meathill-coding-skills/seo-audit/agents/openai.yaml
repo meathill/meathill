@@ -1,7 +1,7 @@
 interface:
   display_name: "SEO Audit"
-  short_description: "多站点 SEO 审计、关键词研究、趋势分析与 Issue 闭环"
-  default_prompt: "Use $seo-audit 对我的网站做一次多站点 SEO 审计，汇总关键词和内容机会，并同步 GitHub issue。"
+  short_description: "多站点 SEO 体检：公开检查、后台证据、复核去重、关键词机会与 Issue 闭环"
+  default_prompt: "Use $seo-audit 对我的网站做一次只读的多站点 SEO 审计，汇总关键词和内容机会，并列出建议的 GitHub issue 草稿；在我明确确认之前，不要创建或更新任何 issue。"
 
 policy:
   allow_implicit_invocation: true

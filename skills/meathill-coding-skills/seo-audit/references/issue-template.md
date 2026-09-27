@@ -19,11 +19,14 @@ YYYY-MM-DD 审计发现……
 
 - GSC：属性、窗口、query/page、clicks/impressions/CTR/平均位置。
 - Bing：属性、实际窗口、关键词、clicks/impressions/CTR/平均位置、sitemap/索引状态。
+- Yandex：站点问题（critical/possible）、低价值页面、复测结论（已复现 / 线上正常·控制台待处理 / 陈旧）；站点新添加时注明数据薄。
 - GA4：property、窗口、自然入口、session/user/engagement/key event/转化。
 - PageSpeed/Chrome：设备、网络、字段/实验室/trace 和实际指标。
 - Ahrefs：已有 project 的快照、keywords/top pages、Site Audit、反链/引荐域。
 - Google Trends：地区、搜索类型、时间范围、相对热度与相关词；注明不是绝对量。
-- 线上/源码：URL、响应/跳转、raw HTML/DOM、绝对源码路径和行号。
+- CDN（如 Cloudflare）：zone、相关缓存规则的匹配条件和缓存时长、实测 `cache-control` / `cf-cache-status`、24h 缓存命中率。
+- Bot 与 AI Crawl Control：Bot Fight Mode、搜索/agent/训练三类爬虫是否允许、托管 robots.txt、AI 爬虫 UA 实测状态码；是否属于配置里的“已知有意设置”。
+- 线上/源码：URL、响应/跳转、raw HTML/DOM、仓库内源码路径和行号（不写本机绝对路径）。
 
 不同工具的指标不要合计；数据不可用要明写原因。
 
