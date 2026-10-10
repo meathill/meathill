@@ -8,6 +8,7 @@ running into across projects.
 
 | Skill | Triggers when you say… |
 |---|---|
+| **email-campaign** | "发送营销邮件", "发邮件活动", "邮件营销", "邮件分批", "email campaign", "newsletter campaign", "检查退信", "邮件拒收" |
 | **code-maintenance** | "maintain", "clean up", "refactor", "tidy up", "DRY up", "address TODOs/FIXMEs", "tech debt markers" |
 | **pr-review** | "PR review", "review 意见", "处理 review 留言", "review comments" |
 | **product-content-audit** | "改文案", "把开发者语言改成人话", "页面跟最近功能不同步", "缺下载/升级链接", "做一次产品内容审查", "SEO/meta 检查" |
@@ -30,7 +31,7 @@ npm install meathill-coding-skills
 mkdir -p ~/.claude/skills
 
 # Link all six
-for s in code-maintenance pr-review product-content-audit project-quote seo-audit website-operator-qa; do
+for s in code-maintenance email-campaign pr-review product-content-audit project-quote seo-audit website-operator-qa; do
   ln -sf "$(pwd)/node_modules/meathill-coding-skills/$s" ~/.claude/skills/$s
 done
 ```
