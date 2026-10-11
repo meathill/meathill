@@ -144,5 +144,5 @@ await resend.contacts.segments.remove({
 | **批次规划与属性同步** | `pnpm email:campaign:prepare --campaign <key>` |
 | **第 0 批 Seed 发送** | `pnpm email:campaign:send -- --campaign <key> --batch 0 --confirm <key>/0` |
 | **Seed 失败轮换重试** | `pnpm email:campaign:send -- --campaign <key> --batch 0 --retry 1 --confirm <key>/0/retry-1` |
-| **正式批次发送** | `pnpm email:campaign:send -- --campaign <key> --batch 1 --confirm <key>/1` |
+| **正式批次发送** | `pnpm email:campaign:send -- --campaign <key> --batch 1 --confirm <key>` |
 | **高风险质量重排** | `pnpm email:campaign:replan --campaign <key> --after-batch 3` |
