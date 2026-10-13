@@ -2,14 +2,15 @@
 name: email-campaign
 description: >
   全链路营销与产品动态邮件发送运维技能：覆盖目标受众清洗（高危中小学学生域名与假号拦截、Private Relay 与测试域过滤）、
-  每日配额与事务缓冲精算、Seed 白名单预发验收、滚动批次投递、Resend 瞬态网络重试、退信与压制根因诊断，以及退信邮箱自动治理。
-  当用户提到“发送营销邮件”、“发邮件活动”、“邮件营销”、“邮件分批”、“email campaign”、“newsletter campaign”、“活动邮件”、“检查退信”、“邮件拒收”时触发。
+  Resend Contacts / Audience 订阅中心同步与权威退订状态治理、每日配额与事务缓冲精算、Seed 白名单预发验收、
+  滚动批次投递、Resend 瞬态网络重试、退信与压制根因诊断，以及退信邮箱自动治理。
+  当用户提到“发送营销邮件”、“发邮件活动”、“邮件营销”、“邮件分批”、“email campaign”、“newsletter campaign”、“活动邮件”、“检查退信”、“邮件拒收”、“退订”时触发。
 ---
 
 # Email Campaign Skill
 
-本技能固化了从受众清洗、白名单验证、分批发送到退信诊断治理的**全链路营销邮件工程实践**。
-核心目标是：**在严守发信服务商配额与反垃圾信誉的前提下，安全、稳健地完成大规模邮件投递，坚决杜绝因高危邮箱导致域名进入黑名单**。
+本技能固化了从受众清洗、订阅中心集成、白名单验证、分批发送到退信诊断治理的**全链路营销邮件工程实践**。
+核心目标是：**在严守发信服务商配额与反垃圾信誉的前提下，安全、稳健地完成大规模邮件投递，坚决杜绝因高危邮箱导致域名进入黑名单，并以发信服务商官方订阅体系（如 Resend Contacts / Audience）为权威闭环处理受众与退订**。
 
 ---
 
@@ -20,11 +21,13 @@ description: >
 2. **严守每日配额精算**：
    - 每日计划消耗必须留足缓冲：
      $$\text{当日已发} + \text{日常业务/事务邮件预留} + \text{当前批次人数} + \text{安全缓冲(20)} \le \text{发信商每日限额}$$
-   - 例如 Resend 免费额度每日 100 封，扣除已用 19、每日一签 19 与安全缓冲 20，单批最多允许 40 封。
-3. **严禁直接发真实用户（Seed 预发闭环）**：
-   - 第 0 批必须由团队核心白名单邮箱进行真实收信验收。
-   - 真实用户批次一旦启动，严禁再次复用滚动投递 Segment 重试 Seed。
-4. **异常邮箱即刻治理（零容忍）**：
+   - 例如 Resend 免费额度每日 100 封，扣除已用与业务预留后，单批最多允许 40 封。
+3. **以发信平台订阅中心（Resend Contacts）作为权威状态源**：
+   - 受众必须同步至发信平台（Resend Contacts / Audience），方便运营在官方后台直观查看受众状态；
+   - 任何批次发信前，**必须全量拉取发信平台的 `unsubscribed: true` 联系人**，以服务商后台退订记录为绝对权威，坚决不给已退订用户发信。
+4. **严禁直接发真实用户（Seed 预发闭环）**：
+   - 第 0 批必须由团队核心白名单邮箱进行真实收信验收，排版与多语言无误后方可推进。
+5. **异常邮箱即刻治理（零容忍）**：
    - 任何发生退信（Hard Bounce / Transient 550）或被服务商压制（Suppressed）的邮箱，必须**立刻在发信平台打标退订（`unsubscribed: true`）**并从后续批次剔除，防止重复消耗配额与累积投诉。
 
 ---
@@ -32,11 +35,10 @@ description: >
 ## 阶段一：受众清洗与风险特征阻断（Audience Hygiene）
 
 ### 1. 基础合规过滤
-- 剔除邮箱未验证用户（`emailConfirmedAt` 为空）。
-- 剔除已注销账户（`deletedAt` 存在）或封禁中用户（`bannedUntil > now`）。
-- 剔除活动截止时间之后注册的用户（防止动态受众干扰批次规划）。
+- 剔除已注销账户（`deletedAt` 存在）或封禁中用户。
 - 排除苹果匿名中继邮箱（`privaterelay.appleid.com`、`private.icloud.com`，防退信且打开率极低）。
 - 排除保留测试域名（`example.com`、`*.test` 等）。
+- 严格去重与空邮箱过滤。
 
 ### 2. 高危中小学/学生邮箱识别与拦截（实战踩坑重点！）
 > [!CAUTION]
@@ -56,83 +58,72 @@ description: >
 
 ---
 
-## 阶段二：分批规划与网络鲁棒性（Batch Planning）
+## 阶段二：Resend 订阅中心集成与退订闭环（Audience & Unsubscribe）
 
-1. **梯形批次规模**：
-   - 第 0 批（Seed）：仅白名单测试邮箱（通常 2~5 人）；
-   - 第 1 批（首批真实用户）：小批量试水，建议 **20 ~ 40 人**；
-   - 第 2 批起：若第 1 批投递健康（退信率正常），可平稳提高到 **50 人/批**；
-   - 第 4 批及退信风险升高时：自动降级回 **20 人/批** 并执行 DNS 质量复检。
-2. **长循环 API 网络重试（防止超时崩溃）**：
-   - 同步几百位联系人属性时，单个 HTTP 请求可能偶发超时（如 Resend `Unable to fetch data`）；
-   - 必须实现指数退避重试（重试 3 次，间隔 1s, 2s, 3s）；
-   - 打印进度日志（如 `[count/total]`），避免无响应假死。
-3. **单一滚动 Segment 机制**：
-   - 发信平台（如 Resend）通常限制自定义 Segment 数量；
-   - 统一使用一个 `delivery-segment`，每次发送前全量覆盖该 Segment 的成员，严禁按批次创建无数垃圾 Segment。
+### 1. 受众全量同步至 Resend Contacts
+为便于在 Resend 官方控制台（Audiences / Contacts）直观管理用户生命周期，业务库中的合格受众应定期批量同步入库：
+- **API 接口**：`POST https://api.resend.com/contacts`
+- **参数规范**：`{ email, first_name, unsubscribed: false }`
+- **流控策略**：每个请求间隔 100~120ms，避免触发 API 频控；已存在的联系人容错跳过（409/422）。
 
----
+### 2. 基于游标（Cursor）的全量分页退订拉取
+> [!IMPORTANT]
+> **Resend Contacts API 默认每页仅返回 20 条记录**！  
+> 若联系人总数超过 20，仅拉取首页会导致历史退订联系人被漏掉，造成违规发信！
 
-## 阶段三：Seed 白名单预发验收（Seed Pre-flight）
-
-执行第 0 批发送前，检查清单：
-- [ ] 邮件主题与正文变量替换正常，无 raw template 泄漏；
-- [ ] HTML 在桌面端（Gmail / Outlook / Apple Mail）与手机端排版自适应无崩坏；
-- [ ] 退订链接（Unsubscribe）与偏好设置可正常跳转；
-- [ ] 发信域名通过 SPF、DKIM、DMARC 验证；
-- [ ] 验收完成后，原 Seed Broadcast 状态确认标记为 `sent`。
-
----
-
-## 阶段四：批次投递与动态名单核对（Execution）
-
-每次执行特定批次（如 `--batch 1`）时：
-1. **二次确认门禁**：必须传入匹配的 `--confirm <campaign>/<batch>` 字符串，防止手滑误发。
-2. **发送前动态核对（Dynamic Reconciliation）**：
-   - 重新拉取最新受众，核对该批次成员中是否有人在最近退订、被标记不健康或命中风险黑名单；
-   - 自动过滤不合格成员，保证进入滚动 Segment 的都是健康合格的联系人。
-3. **退信率熔断校验**：
-   - 调用发信 API 检查近 15 天健康数据，计算：
-     $$\text{保守估算退信率} = \frac{\text{历史退信数} + \min(\text{本批人数}, 2)}{\text{历史总发信数} + \text{本批人数}}$$
-   - 若估算越过 4%，直接抛错终止发送。
-
----
-
-## 阶段五：退信根因诊断与即刻治理（Diagnosis & Remediation SOP）
-
-发送完成后，若发信平台出现拒收，按以下 SOP 排查处理：
-
-### 1. 抓取邮件详情与错误事件
-调用邮件列表 API 抓取 `last_event` 为异常的记录，分类诊断：
-- **`bounced` (Permanent / Hard Bounce)**：
-  - 典型日志：`550 NoSuchUser` / `The email account does not exist`；
-  - 处置：收件人已销号，**必须永久退订**。
-- **`bounced` (Transient / ContentRejected)**：
-  - 典型日志：`550-5.7.1 Rejected by school` / `Policy Rejection`；
-  - 处置：受众域名的安全策略拒绝外信，**必须永久退订**。
-- **`suppressed` (平台压制拦截)**：
-  - 典型日志：邮件直接被服务商拦截，未实际外发；
-  - 原因：该邮箱在全局黑名单中（历史退信/投诉过），白白消耗额度；
-  - 处置：**必须立即退订**。
-
-### 2. 即刻治理脚本流程
-执行治理逻辑（建议自动化脚本实现）：
+**全量分页拉取实现模式**：
 ```ts
-// 1. 设置联系人为退订状态
-await resend.contacts.update({
-  id: contactId,
-  unsubscribed: true,
-  properties: { [campaignBatchProperty]: '' },
-});
-// 2. 从当前滚动投递 Segment 移除
-await resend.contacts.segments.remove({
-  contactId,
-  segmentId: deliverySegmentId,
-});
+let url = 'https://api.resend.com/contacts?limit=100';
+while (url) {
+  const res = await fetch(url, { headers: { Authorization: `Bearer ${apiKey}` } });
+  const { data } = await res.json();
+  for (const contact of data || []) {
+    if (contact.unsubscribed && contact.email) {
+      suppressedSet.add(contact.email.trim().toLowerCase());
+    }
+  }
+  // 若不足 100 条说明已到末尾；否则取最后一条 ID 作为 after 游标
+  if (!data || data.length < 100) break;
+  const lastId = data[data.length - 1]?.id;
+  url = lastId ? `https://api.resend.com/contacts?limit=100&after=${lastId}` : null;
+}
 ```
 
-### 3. 特征沉淀
-将引发退信的域名或模式扩充到 `isBlockedRiskyEmail` 过滤规则中，确保后续活动从源头彻底切断该类邮箱。
+### 3. 双保险退订持久化
+退订采用「**发信平台状态 + 本地受控文件**」双保险：
+1. **Resend Contacts 状态**：调用 `PATCH /contacts/{email}` 将 `unsubscribed` 设为 `true`；
+2. **Git 受控持久化文件**：在仓库中维护 `data/email-campaign-unsubscribed.txt`，无论本地缓存或 `.tmp` 目录如何清理，退订黑名单永久有效。
+
+---
+
+## 阶段三：分批规划与网络鲁棒性（Batch Planning）
+
+1. **基于全局合格受众固定划分批次**：
+   - 严禁对剩余待发名单动态 `slice`（会导致发完上一批后批次序号偏移跳发漏人）；
+   - 批次序号基于初始合格受众（如总数 440 人按 40 人/批划分为 11 批）固定不变，每批独立校验内部已发状态。
+2. **长循环 API 网络重试（防止超时崩溃）**：
+   - 单封邮件发送支持指数退避重试（重试 3 次，间隔 1s, 2s, 3s）；
+   - 打印进度日志（如 `[count/total] ... OK (id)`），避免无响应假死。
+
+---
+
+## 阶段四：Seed 白名单预发验收（Seed Pre-flight）
+
+执行批量发送前，通过 `--test <email>` 进行真实客户端验证：
+- [ ] 邮件主题与正文变量替换正常，无 raw template 泄漏；
+- [ ] 多语言探测（中、英、日、西、葡、法、泰）准确匹配，无法确定时优雅兜底英文；
+- [ ] HTML 在桌面端（Gmail / Outlook / Apple Mail）与手机端排版自适应无崩坏；
+- [ ] 包含明显的退订提示与联系方式。
+
+---
+
+## 阶段五：批次投递与防退信熔断（Execution & Circuit Breaker）
+
+每次执行特定批次时：
+1. **二次确认门禁**：必须传入匹配的 `--confirm <campaign>/<batch>` 字符串，防止手滑误发。
+2. **实时连续失败熔断**：若连续失败达到 **3 次**，立即中止。
+3. **批次累计失败率熔断**：本批次失败率若超过 **5%**（基准人数 $\ge 2$），触发熔断紧急停止发信，保护域名信誉。
+4. **断点自动记录**：发送成功即刻保存 sentAt 状态，重跑幂等不重复投递。
 
 ---
 
@@ -140,9 +131,9 @@ await resend.contacts.segments.remove({
 
 | 操作 | 典型命令 |
 | :--- | :--- |
-| **受众审计** | `pnpm email:audience:audit` |
-| **批次规划与属性同步** | `pnpm email:campaign:prepare --campaign <key>` |
-| **第 0 批 Seed 发送** | `pnpm email:campaign:send -- --campaign <key> --batch 0 --confirm <key>/0` |
-| **Seed 失败轮换重试** | `pnpm email:campaign:send -- --campaign <key> --batch 0 --retry 1 --confirm <key>/0/retry-1` |
-| **正式批次发送** | `pnpm email:campaign:send -- --campaign <key> --batch 1 --confirm <key>` |
-| **高风险质量重排** | `pnpm email:campaign:replan --campaign <key> --after-batch 3` |
+| **受众审计与批次规划** | `pnpm email:campaign --dry-run` |
+| **同步受众到 Resend 订阅中心** | `pnpm email:campaign --sync-contacts` |
+| **一键退订指定邮箱** | `pnpm email:campaign --unsubscribe 'user@example.com'` |
+| **单邮箱 Seed 测试发信** | `pnpm email:campaign --test 'meathill@gmail.com' --locale zh-CN` |
+| **执行指定批次发送** | `pnpm email:campaign --batch 1 --confirm 'art-qr/1'` |
+| **强制重新从数据库拉取受众** | `pnpm email:campaign --refresh-users --dry-run` |
