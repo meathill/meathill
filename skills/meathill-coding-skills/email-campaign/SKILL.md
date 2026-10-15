@@ -94,6 +94,21 @@ while (url) {
 1. **Resend Contacts 状态**：调用 `PATCH /contacts/{email}` 将 `unsubscribed` 设为 `true`；
 2. **Git 受控持久化文件**：在仓库中维护 `data/email-campaign-unsubscribed.txt`，无论本地缓存或 `.tmp` 目录如何清理，退订黑名单永久有效。
 
+### 4. RFC 8058 标准一键退订与 Web 端点闭环（重要规范！）
+> [!IMPORTANT]
+> **API 发信（`POST /emails`）不会自动插入退订链接！必须全链路自建退订入口**：
+> 1. **严禁硬编码“回复邮件退订”**：所有语言的模板页脚必须通过专属函数渲染超链接 `<a href="${unsubscribeUrl}">`，纯文本同步提供链接；
+> 2. **发信必须注入 RFC 8058 Header**：
+>    ```ts
+>    headers: {
+>      'List-Unsubscribe': `<${unsubscribeUrl}>`,
+>      'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
+>    }
+>    ```
+>    使 Gmail、Apple Mail、QQ 邮箱等在邮件顶部原生展示【退订】按钮；
+> 3. **安全防篡改 Token**：`unsubscribeUrl` 参数必须附带基于 Web Crypto / HMAC-SHA256 的防篡改签名 token（`verifyUnsubscribeToken`），杜绝恶意批量退订他人；
+> 4. **Web 路由自动联动 Resend**：服务端端点（如 `/api/email/unsubscribe`）处理 GET 请求（展示友好确认页）与 POST 请求（客户端一键静默退订），接收到后立刻调用 `PATCH /contacts/{email}` 将 Resend Contacts 的 `unsubscribed` 置为 `true`，完成订阅中心权威闭环。
+
 ---
 
 ## 阶段三：分批规划与网络鲁棒性（Batch Planning）
