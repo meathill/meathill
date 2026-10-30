@@ -2,7 +2,7 @@ import type { BrandCatalog } from './types.js';
 
 export const BRAND_CATALOG = {
   "version": 1,
-  "updatedOn": "2026-08-28",
+  "updatedOn": "2026-10-30",
   "directoryUrl": "https://meathill.com/app",
   "fallbackDirectoryUrl": "https://meathill.github.io/meathill/",
   "organization": {
@@ -53,17 +53,17 @@ export const BRAND_CATALOG = {
       "priority": 65
     },
     {
-      "id": "muiad",
+      "id": "muiad.meathill.com",
       "host": "muiad.meathill.com",
       "name": "MuiAD",
       "url": "https://muiad.meathill.com",
-      "summary": "面向开发者的自托管广告网络，通过 MCP 管理产品、广告位和投放。",
-      "type": "public-product",
-      "visibility": "public",
-      "brandMode": "full",
+      "summary": "",
+      "type": "legacy",
+      "visibility": "unlisted",
+      "brandMode": "none",
       "defaultLocale": "en",
-      "navigationGroup": "products",
-      "priority": 70
+      "navigationGroup": "none",
+      "priority": 0
     },
     {
       "id": "hsm",
@@ -92,17 +92,17 @@ export const BRAND_CATALOG = {
       "priority": 35
     },
     {
-      "id": "waka",
+      "id": "waka.meathill.com",
       "host": "waka.meathill.com",
       "name": "Waka",
       "url": "https://waka.meathill.com",
-      "summary": "帮助用户积累和练习词汇的跨端应用，并提供公开下载与产品说明入口。",
-      "type": "public-product",
-      "visibility": "public",
-      "brandMode": "full",
+      "summary": "",
+      "type": "legacy",
+      "visibility": "unlisted",
+      "brandMode": "none",
       "defaultLocale": "en",
-      "navigationGroup": "products",
-      "priority": 45
+      "navigationGroup": "none",
+      "priority": 0
     },
     {
       "id": "app-feedback",
@@ -157,17 +157,17 @@ export const BRAND_CATALOG = {
       "priority": 50
     },
     {
-      "id": "muirpg",
+      "id": "muirpg.meathill.com",
       "host": "muirpg.meathill.com",
       "name": "MuiRPG",
       "url": "https://muirpg.meathill.com",
-      "summary": "选择模组和人物卡，与 AI 一起完成遵循清晰规则、持续发展的线上跑团。",
-      "type": "experiment",
-      "visibility": "public",
-      "brandMode": "hybrid",
+      "summary": "",
+      "type": "legacy",
+      "visibility": "unlisted",
+      "brandMode": "none",
       "defaultLocale": "zh",
-      "navigationGroup": "experiments",
-      "priority": 40
+      "navigationGroup": "none",
+      "priority": 0
     },
     {
       "id": "mui-search.meathill.com",

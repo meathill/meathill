@@ -1,6 +1,6 @@
 {
   "name": "meathill-brand-react",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Meathill Studio 跨站 Header、Footer、SiteSwitcher 与 Breadcrumb",
   "type": "module",
   "license": "MIT",
@@ -19,7 +19,7 @@
     "test": "vitest run"
   },
   "peerDependencies": {
-    "meathill-brand": "^0.1.0",
+    "meathill-brand": "^0.2.0",
     "react": ">=18"
   },
   "devDependencies": {

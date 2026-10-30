@@ -1,6 +1,6 @@
 # 产品 Repo ↔ 网站清单
 
-更新时间：2026-08-28。近期窗口：2026-05-09 至 2026-08-28（90 天）。
+更新时间：2026-10-30。近期窗口：2026-05-09 至 2026-10-30（90 天）。
 
 `products.json` 是单一数据源；本文件由 `pnpm run format` 生成，请勿手动维护表格。
 
@@ -23,11 +23,8 @@
 | [Meathill](https://meathill.com) | [meathill/blog-2026](https://github.com/meathill/blog-2026) | 2026-07-27 | 待接入：meathill-products | 未启用，只读快照<br>`https://meathill.github.io/blog-2026/` | 200（2026-07-14） |
 | [MuiCV](https://muicv.com) | [meathill/muicv](https://github.com/meathill/muicv) | 2026-07-27 | 待接入：meathill-products | 未启用，仅降级页<br>`https://meathill.github.io/muicv/` | 200（2026-07-14） |
 | [MuiMemo](https://muimemo.meathill.com) | [meathill/mui-memo](https://github.com/meathill/mui-memo) | 2026-07-18 | 待接入：meathill-products | 未启用，仅降级页<br>`https://meathill.github.io/mui-memo/` | 200（2026-07-14） |
-| [MuiAD](https://muiad.meathill.com) | [meathill/mui-ad](https://github.com/meathill/mui-ad) | 2026-06-29 | 待接入：meathill-products | 未启用，仅降级页<br>`https://meathill.github.io/mui-ad/` | 200（2026-07-14） |
 | [App Feedback](https://feedback.meathill.com) | [meathill/app-feedback](https://github.com/meathill/app-feedback) | 2026-06-23 | 待接入：meathill-products | 未启用，仅降级页<br>`https://meathill.github.io/app-feedback/` | 200（2026-08-28） |
-| [MuiRPG](https://muirpg.meathill.com) | [meathill/dnd](https://github.com/meathill/dnd) | 2026-06-16 | 待接入：meathill-products | 未启用，仅降级页<br>`https://meathill.github.io/dnd/` | 200（2026-08-28） |
 | [Meathill HSM](https://hsm.meathill.com) | [meathill/hsm](https://github.com/meathill/hsm) | 2026-03-08 | 待接入：meathill-products | 未启用，部分静态可用<br>`https://meathill.github.io/hsm/` | 200（2026-07-14） |
-| [Waka](https://waka.meathill.com) | [meathill/carrot-word](https://github.com/meathill/carrot-word) | 2026-01-24 | 待接入：meathill-products | 未启用，仅降级页<br>`https://meathill.github.io/carrot-word/` | 200（2026-08-28） |
 
 ## 合作产品
 
@@ -60,10 +57,13 @@
 | --- | --- | --- |
 | `meathill/mr-hype` | 2026-07-09 | 未发现生产站点 |
 | `meathill/vitesite` | 2026-07-09 | 未发现生产站点 |
+| `meathill/mui-ad` | 2026-06-29 | 已从公开产品矩阵下架 |
 | `meathill/live-screen` | 2026-06-26 | 本地辅助工具，无公开产品站 |
 | `meathill/italking` | 2026-06-22 | 未发现生产站点 |
+| `meathill/dnd` | 2026-06-16 | 已从公开产品矩阵下架 |
 | `meathill/mui-db-viewer` | 2026-06-14 | 本地应用，无公开产品站 |
 | `meathill/norm-bridge` | 2026-05-23 | 未发现生产站点 |
 | `meathill/dnd-games` | 2026-05-03 | 未发现独立生产站点 |
 | `meathill/resume` | 2026-04-24 | 未发现生产站点 |
 | `meathill/mui-search` | 2026-04-18 | 用户明确不纳入本轮产品同步 |
+| `meathill/carrot-word` | 2026-01-24 | 已从公开产品矩阵下架 |

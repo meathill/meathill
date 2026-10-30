@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedOn": "2026-08-28",
+  "updatedOn": "2026-10-30",
   "directory": {
     "url": "https://meathill.com/app",
     "fallbackUrl": "https://meathill.github.io/meathill/",
@@ -15,7 +15,7 @@
   "recency": {
     "days": 90,
     "since": "2026-05-09",
-    "coreRepositoryExceptions": ["meathill/hsm", "meathill/carrot-word"]
+    "coreRepositoryExceptions": ["meathill/hsm"]
   },
   "brandNetwork": {
     "organization": {
@@ -57,13 +57,12 @@
       },
       {
         "host": "muiad.meathill.com",
-        "siteId": "muiad",
         "name": "MuiAD",
-        "type": "public-product",
-        "visibility": "public",
-        "brandMode": "full",
+        "type": "legacy",
+        "visibility": "unlisted",
+        "brandMode": "none",
         "defaultLocale": "en",
-        "navigationGroup": "products"
+        "navigationGroup": "none"
       },
       {
         "host": "hsm.meathill.com",
@@ -87,13 +86,12 @@
       },
       {
         "host": "waka.meathill.com",
-        "siteId": "waka",
         "name": "Waka",
-        "type": "public-product",
-        "visibility": "public",
-        "brandMode": "full",
+        "type": "legacy",
+        "visibility": "unlisted",
+        "brandMode": "none",
         "defaultLocale": "en",
-        "navigationGroup": "products"
+        "navigationGroup": "none"
       },
       {
         "host": "feedback.meathill.com",
@@ -137,13 +135,12 @@
       },
       {
         "host": "muirpg.meathill.com",
-        "siteId": "muirpg",
         "name": "MuiRPG",
-        "type": "experiment",
-        "visibility": "public",
-        "brandMode": "hybrid",
+        "type": "legacy",
+        "visibility": "unlisted",
+        "brandMode": "none",
         "defaultLocale": "zh",
-        "navigationGroup": "experiments"
+        "navigationGroup": "none"
       },
       {
         "host": "mui-search.meathill.com",
@@ -278,13 +275,6 @@
       "pagesStatus": "eligibility-unverified"
     },
     {
-      "slug": "meathill/mui-ad",
-      "visibility": "public",
-      "defaultBranch": "master",
-      "lastActivityOn": "2026-06-29",
-      "pagesStatus": "not-enabled"
-    },
-    {
       "slug": "meathill/mui-memo",
       "visibility": "public",
       "defaultBranch": "master",
@@ -306,13 +296,6 @@
       "pagesStatus": "not-enabled"
     },
     {
-      "slug": "meathill/carrot-word",
-      "visibility": "public",
-      "defaultBranch": "master",
-      "lastActivityOn": "2026-01-24",
-      "pagesStatus": "not-enabled"
-    },
-    {
       "slug": "meathill/everband",
       "visibility": "public",
       "defaultBranch": "master",
@@ -324,13 +307,6 @@
       "visibility": "public",
       "defaultBranch": "master",
       "lastActivityOn": "2026-08-11",
-      "pagesStatus": "not-enabled"
-    },
-    {
-      "slug": "meathill/dnd",
-      "visibility": "public",
-      "defaultBranch": "master",
-      "lastActivityOn": "2026-06-16",
       "pagesStatus": "not-enabled"
     },
     {
@@ -502,28 +478,6 @@
       }
     },
     {
-      "id": "muiad",
-      "name": "MuiAD",
-      "url": "https://muiad.meathill.com",
-      "summary": "面向开发者的自托管广告网络，通过 MCP 管理产品、广告位和投放。",
-      "repository": "meathill/mui-ad",
-      "ownership": "owned",
-      "footer": {
-        "status": "planned",
-        "groups": ["meathill-products"],
-        "priority": 70
-      },
-      "pages": {
-        "url": "https://meathill.github.io/mui-ad/",
-        "mode": "landing-only"
-      },
-      "health": {
-        "checkedOn": "2026-07-14",
-        "status": "ok",
-        "httpStatus": 200
-      }
-    },
-    {
       "id": "muimemo",
       "name": "MuiMemo",
       "url": "https://muimemo.meathill.com",
@@ -568,28 +522,6 @@
       }
     },
     {
-      "id": "waka",
-      "name": "Waka",
-      "url": "https://waka.meathill.com",
-      "summary": "帮助用户积累和练习词汇的跨端应用，并提供公开下载与产品说明入口。",
-      "repository": "meathill/carrot-word",
-      "ownership": "owned",
-      "footer": {
-        "status": "planned",
-        "groups": ["meathill-products"],
-        "priority": 45
-      },
-      "pages": {
-        "url": "https://meathill.github.io/carrot-word/",
-        "mode": "landing-only"
-      },
-      "health": {
-        "checkedOn": "2026-08-28",
-        "status": "ok",
-        "httpStatus": 200
-      }
-    },
-    {
       "id": "everband",
       "name": "Everband",
       "url": "https://everband.meathill.com",
@@ -625,28 +557,6 @@
       },
       "pages": {
         "url": "https://meathill.github.io/vibesite/",
-        "mode": "landing-only"
-      },
-      "health": {
-        "checkedOn": "2026-08-28",
-        "status": "ok",
-        "httpStatus": 200
-      }
-    },
-    {
-      "id": "muirpg",
-      "name": "MuiRPG",
-      "url": "https://muirpg.meathill.com",
-      "summary": "选择模组和人物卡，与 AI 一起完成遵循清晰规则、持续发展的线上跑团。",
-      "repository": "meathill/dnd",
-      "ownership": "owned",
-      "footer": {
-        "status": "planned",
-        "groups": ["meathill-products"],
-        "priority": 40
-      },
-      "pages": {
-        "url": "https://meathill.github.io/dnd/",
         "mode": "landing-only"
       },
       "health": {
@@ -921,6 +831,21 @@
     }
   ],
   "excludedRepositories": [
+    {
+      "repository": "meathill/mui-ad",
+      "lastActivityOn": "2026-06-29",
+      "reason": "已从公开产品矩阵下架"
+    },
+    {
+      "repository": "meathill/dnd",
+      "lastActivityOn": "2026-06-16",
+      "reason": "已从公开产品矩阵下架"
+    },
+    {
+      "repository": "meathill/carrot-word",
+      "lastActivityOn": "2026-01-24",
+      "reason": "已从公开产品矩阵下架"
+    },
     {
       "repository": "meathill/mui-search",
       "lastActivityOn": "2026-04-18",

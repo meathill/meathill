@@ -2,21 +2,20 @@ import {
   brandCatalog,
   buildBrandBreadcrumbs,
   getBrandNetworkLinks,
-  getPublicBrandSites,
   type BrandBreadcrumbItem,
 } from 'meathill-brand';
 import type { ReactNode } from 'react';
+import {
+  BrandSiteSwitcher,
+  type BrandSiteSwitcherProps,
+} from './switcher.js';
+
+export { BrandSiteSwitcher, type BrandSiteSwitcherProps };
 
 interface BrandLabels {
   allProducts: string;
-  current: string;
   navigation: string;
   network: string;
-}
-
-export interface BrandSiteSwitcherProps {
-  currentSiteId: string;
-  locale?: string;
 }
 
 export interface BrandHeaderProps extends BrandSiteSwitcherProps {
@@ -43,43 +42,15 @@ function resolveLabels(locale = 'zh'): BrandLabels {
   if (locale.toLowerCase().startsWith('zh')) {
     return {
       allProducts: '全部产品',
-      current: '当前站点',
       navigation: '面包屑导航',
       network: '产品网络',
     };
   }
   return {
     allProducts: 'All products',
-    current: 'Current site',
     navigation: 'Breadcrumb',
     network: 'Product network',
   };
-}
-
-export function BrandSiteSwitcher({ currentSiteId, locale }: BrandSiteSwitcherProps) {
-  const labels = resolveLabels(locale);
-  const sites = getPublicBrandSites();
-
-  return (
-    <details className="meathill-brand-switcher">
-      <summary>{labels.network}</summary>
-      <div className="meathill-brand-switcher-panel">
-        <ul>
-          {sites.map((site) => (
-            <li key={site.id}>
-              <a aria-current={site.id === currentSiteId ? 'page' : undefined} href={site.url}>
-                <span>{site.name}</span>
-                {site.id === currentSiteId ? <small>{labels.current}</small> : null}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <a className="meathill-brand-directory-link" href={brandCatalog.directoryUrl}>
-          {labels.allProducts}
-        </a>
-      </div>
-    </details>
-  );
 }
 
 export function BrandHeader({
@@ -92,10 +63,15 @@ export function BrandHeader({
   productUrl,
 }: BrandHeaderProps) {
   return (
-    <header className={`meathill-brand-header meathill-brand-header-${mode} ${className}`.trim()}>
+    <header
+      className={`meathill-brand-header meathill-brand-header-${mode} ${className}`.trim()}
+    >
       <div className="meathill-brand-header-inner">
         <div className="meathill-brand-identity">
-          <a className="meathill-brand-studio-link" href={brandCatalog.organization.url}>
+          <a
+            className="meathill-brand-studio-link"
+            href={brandCatalog.organization.url}
+          >
             Meathill Studio
           </a>
           <span aria-hidden="true" className="meathill-brand-divider" />
@@ -130,7 +106,8 @@ export function BrandFooter({
           {description ? <p>{description}</p> : null}
           {children}
           <small>
-            © {new Date().getFullYear()} {brandCatalog.organization.legalName}. All rights reserved.
+            © {new Date().getFullYear()}{' '}
+            {brandCatalog.organization.legalName}. All rights reserved.
           </small>
         </div>
         <nav aria-label={labels.network} className="meathill-brand-footer-nav">
@@ -146,16 +123,27 @@ export function BrandFooter({
   );
 }
 
-export function BrandBreadcrumb({ currentSiteId, items = [], className = '' }: BrandBreadcrumbProps) {
+export function BrandBreadcrumb({
+  currentSiteId,
+  items = [],
+  className = '',
+}: BrandBreadcrumbProps) {
   const labels = resolveLabels();
   const breadcrumbs = buildBrandBreadcrumbs(currentSiteId, items);
 
   return (
-    <nav aria-label={labels.navigation} className={`meathill-brand-breadcrumb ${className}`.trim()}>
+    <nav
+      aria-label={labels.navigation}
+      className={`meathill-brand-breadcrumb ${className}`.trim()}
+    >
       <ol>
         {breadcrumbs.map((item, index) => (
           <li key={`${item.label}-${index}`}>
-            {item.href ? <a href={item.href}>{item.label}</a> : <span aria-current="page">{item.label}</span>}
+            {item.href ? (
+              <a href={item.href}>{item.label}</a>
+            ) : (
+              <span aria-current="page">{item.label}</span>
+            )}
           </li>
         ))}
       </ol>

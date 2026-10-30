@@ -4,6 +4,7 @@ import {
   buildBrandBreadcrumbs,
   getBrandNetworkLinks,
   getOrganizationJsonLd,
+  getPublicBrandSites,
   resolveBrandSite,
 } from './index.js';
 
@@ -11,6 +12,13 @@ describe('品牌目录', () => {
   it('按主机名解析站点并忽略端口', () => {
     expect(resolveBrandSite('TOOLS.MEATHILL.COM:443')?.id).toBe('evertools');
     expect(resolveBrandSite('unknown.meathill.com')).toBeUndefined();
+  });
+
+  it('公开品牌网络与 Footer 不包含已下架的 MuiAD、Waka 与 MuiRPG', () => {
+    const publicNames = getPublicBrandSites().map((site) => site.name);
+    for (const removed of ['MuiAD', 'Waka', 'MuiRPG']) {
+      expect(publicNames).not.toContain(removed);
+    }
   });
 
   it('Footer 不包含当前站、服务或重复产品', () => {

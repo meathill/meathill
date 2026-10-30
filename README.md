@@ -21,7 +21,6 @@ I have been building for the web since 2006. For 20+ years, I have worked across
 | **MuiCV** | 为每个岗位生成和优化定制简历，素材本地保存并可导出 PDF。 | Build and refine a tailored resume for each role, with local-first materials and PDF export. | [Product](https://muicv.com) · [Source](https://github.com/meathill/muicv) |
 | **MuiRouter** | OpenAI-compatible 多模型路由，用一个 API Key 统一接入、计费与配额。 | An OpenAI-compatible gateway for multi-provider access, billing, and quotas with one API key. | [Product](https://muirouter.com) · [Source](https://github.com/meathill/mui-api) |
 | **MuiStory** | AI 驱动的互动故事平台，让每一个选择真正改变剧情。 | AI-powered interactive fiction where every choice changes the story. | [Product](https://muistory.com) · [Source](https://github.com/meathill/mui-gamebook) |
-| **MuiAD** | 面向开发者的 self-hosted、MCP-first 广告网络。 | A self-hosted, MCP-first ad network for developers. | [Product](https://muiad.meathill.com) · [Source](https://github.com/meathill/mui-ad) |
 | **DYQR** | 可随时修改目标并查看访问数据的动态二维码与短链。 | Dynamic QR codes and short links with editable destinations and scan analytics. | [Product](https://dyqr.me) |
 | **Free AI API** | 整理可以直接尝试的免费 AI API 与开发资源。 | A curated directory of free AI APIs and developer resources. | [Product](https://freeaiapi.org) |
 | **Meathill HSM** | 本地优先的密钥管理工具，安全保存和使用敏感配置。 | A local-first secrets manager for storing and using sensitive configuration safely. | [Product](https://hsm.meathill.com) · [Source](https://github.com/meathill/hsm) |
