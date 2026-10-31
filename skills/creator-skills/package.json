@@ -1,6 +1,6 @@
 {
   "name": "creator-skills",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Agent skills for content creation, article writing, and omnichannel publishing by Meathill.",
   "main": "index.js",
   "files": [
