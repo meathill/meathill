@@ -1,9 +1,10 @@
 {
   "name": "video-skills",
-  "version": "1.1.0",
-  "description": "Agent skills for video editing and livestream post-processing by Meathill.",
+  "version": "1.2.0",
+  "description": "Agent skills for video editing, livestream post-processing and brand IP video production by Meathill.",
   "main": "index.js",
   "files": [
+    "brand-ip-video-matrix",
     "live-replay-video-pipeline"
   ],
   "scripts": {
@@ -16,7 +17,9 @@
     "ai-agents",
     "video",
     "ffmpeg",
-    "whisper"
+    "whisper",
+    "virtual-mascot",
+    "short-video"
   ],
   "author": "Meathill Zhai <meathill@gmail.com> (https://blog.meathill.com)",
   "license": "MIT",

@@ -1,0 +1,7 @@
+interface:
+  display_name: "品牌虚拟 IP 短视频矩阵"
+  short_description: "从官网口径到 IP 形象到卖点成片矩阵：角色一致性、声线克隆与社交平台成片规格"
+  default_prompt: "Use $brand-ip-video-matrix 帮我为这个品牌做一个虚拟 IP 形象，并按卖点产出一批 9:16 短视频。"
+
+policy:
+  allow_implicit_invocation: true
